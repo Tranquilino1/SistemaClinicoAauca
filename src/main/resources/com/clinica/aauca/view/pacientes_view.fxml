@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane style="-fx-padding: 0 0 10 0; -fx-background-color: transparent;" fx:controller="com.clinica.aauca.controller.PacientesController" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
+    <top>
+        <HBox spacing="15" alignment="CENTER_LEFT" style="-fx-padding: 0 0 15 0;">
+            <Label text="Gestión de Pacientes" style="-fx-font-size: 24px; -fx-font-weight: bold; -fx-text-fill: #003366;"/>
+            <Region HBox.hgrow="ALWAYS" />
+            <TextField fx:id="txtBuscar" promptText="Buscar por nombre..." prefWidth="250" style="-fx-background-radius: 20; -fx-padding: 8 15;"/>
+            <Button text="Buscar" onAction="#buscarPaciente" styleClass="button btn-orange" style="-fx-background-radius: 20;"/>
+            <Button fx:id="btnNuevoPaciente" text="Nuevo Paciente" onAction="#crearPaciente" styleClass="button btn-green" style="-fx-background-radius: 20;"/>
+        </HBox>
+    </top>
+    
+    <center>
+        <ScrollPane fitToWidth="true" style="-fx-background-color: transparent; -fx-background: transparent; -fx-border-color: transparent;">
+            <FlowPane fx:id="containerPacientes" hgap="25" vgap="25" style="-fx-padding: 15;">
+                <!-- Tarjetas de pacientes -->
+            </FlowPane>
+        </ScrollPane>
+    </center>
+
+    <bottom>
+        <HBox spacing="25" alignment="CENTER" style="-fx-padding: 15 0 0 0;">
+            <Button fx:id="btnAnterior" text="⬅️ Página Anterior" onAction="#paginaAnterior" styleClass="button btn-orange" prefWidth="180" style="-fx-background-radius: 20;"/>
+            <VBox alignment="CENTER">
+                <Label fx:id="lblPagina" text="Página 1 de 1" style="-fx-font-weight: bold; -fx-font-size: 15px; -fx-text-fill: #1565C0;" />
+                <Label text="Clínica AAUCA" style="-fx-font-size: 9px; -fx-text-fill: gray;" />
+            </VBox>
+            <Button fx:id="btnSiguiente" text="Página Siguiente ➡️" onAction="#paginaSiguiente" styleClass="button btn-orange" prefWidth="180" style="-fx-background-radius: 20;"/>
+        </HBox>
+    </bottom>
+</BorderPane>

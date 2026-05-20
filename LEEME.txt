@@ -1,0 +1,21 @@
+===========================================================
+    SISTEMA DE GESTIÓN CLÍNICA AAUCA - VERSIÓN 1.0
+===========================================================
+
+INSTRUCCIONES DE INICIO:
+-----------------------
+1. Ejecute el archivo "ClinicaAauca_Final.exe" (Tiene el icono de la clínica).
+2. Si por algún motivo el .exe no abre, use "Iniciar_Clinica.bat".
+
+REQUISITO:
+- Tener instalado Java 17 o superior.
+
+ARCHIVOS:
+- Clinica_AAUCA.jar: El motor de la aplicación.
+- clinica_aauca.db: Su base de datos con los pacientes.
+- ClinicaAauca_Final.exe: Acceso directo profesional.
+- Iniciar_Clinica.bat: Lanzador de emergencia.
+
+Si ve un error de "Java no encontrado", descargue Java 17 desde el sitio oficial de Oracle o Adoptium.
+
+© 2026 Clínica AAUCA.

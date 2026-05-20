@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.image.*?>
+<?import de.jensd.fx.glyphs.fontawesome.*?>
+
+<HBox prefHeight="720.0" prefWidth="1280.0" stylesheets="@../css/style.css"
+      xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.clinica.aauca.controller.DashboardController">
+
+    <!-- ============================================================ -->
+    <!-- SIDEBAR LATERAL                                               -->
+    <!-- ============================================================ -->
+    <VBox prefWidth="260.0" styleClass="sidebar">
+
+        <!-- Logo + Nombre de la Clínica -->
+        <VBox alignment="CENTER" spacing="8.0" styleClass="sidebar-header" style="-fx-padding: 20 10;">
+            <!-- Logo AAUCA -->
+            <ImageView fx:id="logoView" fitWidth="80" fitHeight="80" preserveRatio="true">
+                <image>
+                    <Image url="@../images/aauca_logo.png" />
+                </image>
+            </ImageView>
+            <Label text="CLÍNICA AAUCA" styleClass="sidebar-title" />
+            <Label text="Afro-American University" style="-fx-text-fill: rgba(255,255,255,0.5); -fx-font-size: 10px;" />
+            <Separator style="-fx-opacity: 0.2;" />
+        </VBox>
+
+        <!-- Info Usuario Logueado -->
+        <VBox onMouseClicked="#abrirConfiguracion" alignment="CENTER" spacing="4" style="-fx-padding: 10 15; -fx-background-color: rgba(0,0,0,0.15); -fx-cursor: hand;">
+            <FontAwesomeIconView glyphName="USER_CIRCLE" size="28" fill="rgba(255,255,255,0.8)" />
+            <Label fx:id="lblWelcome" text="Usuario" style="-fx-text-fill: white; -fx-font-size: 12px; -fx-font-weight: bold;" wrapText="true" textAlignment="CENTER" />
+            <Label fx:id="lblRole" text="Rol" style="-fx-text-fill: rgba(255,255,255,0.6); -fx-font-size: 11px;" />
+        </VBox>
+
+        <!-- Menú Dinámico -->
+        <ScrollPane fitToWidth="true" vbarPolicy="ALWAYS" style="-fx-background-color: transparent; -fx-border-color: transparent;" VBox.vgrow="ALWAYS">
+            <VBox fx:id="menuContainer" spacing="3.0" styleClass="sidebar-menu" style="-fx-padding: 10 5;" />
+        </ScrollPane>
+    </VBox>
+
+    <!-- ============================================================ -->
+    <!-- ÁREA DE CONTENIDO PRINCIPAL                                   -->
+    <!-- ============================================================ -->
+    <VBox HBox.hgrow="ALWAYS" styleClass="main-content">
+
+        <!-- BARRA SUPERIOR -->
+        <HBox alignment="CENTER_LEFT" spacing="15.0" styleClass="top-bar"
+              style="-fx-padding: 12 25; -fx-background-color: white; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.08), 4, 0, 0, 2);">
+            <FontAwesomeIconView glyphName="HOSPITAL_ALT" size="22" fill="#003366" />
+            <Label text="Sistema de Gestión Clínica" style="-fx-font-size: 16px; -fx-font-weight: bold; -fx-text-fill: #003366;" />
+            <Region HBox.hgrow="ALWAYS" />
+            <!-- Hora en tiempo real -->
+            <Label fx:id="lblHora" text="--:--" style="-fx-font-size: 13px; -fx-text-fill: #666; -fx-font-family: 'Monospace';" />
+            <FontAwesomeIconView glyphName="CLOCK_ALT" size="16" fill="#999" />
+        </HBox>
+
+        <!-- ÁREA CENTRAL SCROLLABLE -->
+        <ScrollPane fitToWidth="true" vbarPolicy="ALWAYS" VBox.vgrow="ALWAYS" style="-fx-background-color: transparent; -fx-background: #F5F7FA; -fx-border-color: transparent;">
+            <VBox spacing="0">
+                <!-- FILA DE ESTADÍSTICAS — 4 tarjetas responsivas -->
+                <FlowPane hgap="15.0" vgap="15.0" style="-fx-padding: 15 25 5 25;">
+        
+                    <!-- Stat 1: Estado de Actividad -->
+                    <VBox onMouseClicked="#clickActividad" styleClass="stat-card" prefWidth="250" style="-fx-background-color: #E3F2FD; -fx-background-radius: 10; -fx-padding: 15; -fx-alignment: CENTER_LEFT; -fx-cursor: hand;">
+                        <HBox spacing="12" alignment="CENTER_LEFT">
+                            <FontAwesomeIconView glyphName="HEARTBEAT" size="28" fill="#1565C0" />
+                            <VBox>
+                                <Label text="ACTIVIDAD" style="-fx-font-size: 10px; -fx-text-fill: #1565C0; -fx-font-weight: bold;" />
+                                <Label fx:id="lblStat1" text="—" style="-fx-font-size: 18px; -fx-font-weight: bold; -fx-text-fill: #003366;" />
+                            </VBox>
+                        </HBox>
+                    </VBox>
+        
+                    <!-- Stat 2: Usuarios -->
+                    <!-- Stat 2: Usuarios -->
+                    <VBox onMouseClicked="#clickUsuarios" styleClass="stat-card" prefWidth="250" style="-fx-background-color: #F3E5F5; -fx-background-radius: 10; -fx-padding: 15; -fx-alignment: CENTER_LEFT; -fx-cursor: hand;">
+                        <HBox spacing="12" alignment="CENTER_LEFT">
+                            <FontAwesomeIconView glyphName="USERS" size="28" fill="#6A1B9A" />
+                            <VBox>
+                                <Label text="USUARIOS" style="-fx-font-size: 10px; -fx-text-fill: #6A1B9A; -fx-font-weight: bold;" />
+                                <Label fx:id="lblStatUsuarios" text="—" style="-fx-font-size: 18px; -fx-font-weight: bold; -fx-text-fill: #6A1B9A;" />
+                            </VBox>
+                        </HBox>
+                    </VBox>
+        
+                    <!-- Stat 3: Pacientes -->
+                    <!-- Stat 3: Pacientes -->
+                    <VBox onMouseClicked="#clickPacientes" styleClass="stat-card" prefWidth="250" style="-fx-background-color: #E8F5E9; -fx-background-radius: 10; -fx-padding: 15; -fx-alignment: CENTER_LEFT; -fx-cursor: hand;">
+                        <HBox spacing="12" alignment="CENTER_LEFT">
+                            <FontAwesomeIconView glyphName="USER_MD" size="28" fill="#2E7D32" />
+                            <VBox>
+                                <Label text="PACIENTES" style="-fx-font-size: 10px; -fx-text-fill: #2E7D32; -fx-font-weight: bold;" />
+                                <Label fx:id="lblStatPacientes" text="—" style="-fx-font-size: 18px; -fx-font-weight: bold; -fx-text-fill: #2E7D32;" />
+                            </VBox>
+                        </HBox>
+                    </VBox>
+        
+                    <!-- Stat 4: Alertas / Info adicional -->
+                    <!-- Stat 4: Alertas / Info adicional -->
+                    <VBox onMouseClicked="#clickIngresos" styleClass="stat-card" prefWidth="250" style="-fx-background-color: #FFF3E0; -fx-background-radius: 10; -fx-padding: 15; -fx-alignment: CENTER_LEFT; -fx-cursor: hand;">
+                        <HBox spacing="12" alignment="CENTER_LEFT">
+                            <FontAwesomeIconView glyphName="BELL" size="28" fill="#E65100" />
+                            <VBox>
+                                <Label text="ALERTAS" style="-fx-font-size: 10px; -fx-text-fill: #E65100; -fx-font-weight: bold;" />
+                                <Label fx:id="lblStat2" text="—" style="-fx-font-size: 18px; -fx-font-weight: bold; -fx-text-fill: #E65100;" />
+                            </VBox>
+                        </HBox>
+                    </VBox>
+                </FlowPane>
+        
+                <!-- ÁREA DE TRABAJO -->
+                <StackPane fx:id="workingArea" VBox.vgrow="ALWAYS" style="-fx-background-color: #F5F7FA; -fx-padding: 10 25 20 25;" />
+            </VBox>
+        </ScrollPane>
+
+    </VBox>
+</HBox>

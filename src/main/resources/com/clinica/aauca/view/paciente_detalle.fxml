@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import de.jensd.fx.glyphs.fontawesome.*?>
+
+<VBox spacing="15" style="-fx-padding: 20; -fx-background-color: #F8F9FA;" fx:controller="com.clinica.aauca.controller.PacienteDetalleController" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
+    
+    <!-- Encabezado con Información del Paciente -->
+    <HBox spacing="20" style="-fx-background-color: white; -fx-padding: 20; -fx-background-radius: 10; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.1), 10, 0, 0, 5);" alignment="CENTER_LEFT">
+        <FontAwesomeIconView glyphName="USER_CIRCLE" size="60" fill="#003366" />
+        <VBox spacing="5" HBox.hgrow="ALWAYS">
+            <Label fx:id="lblNombre" text="Nombre Apellido" style="-fx-font-size: 20px; -fx-font-weight: bold; -fx-text-fill: #003366;" />
+            <HBox spacing="15">
+                <Label fx:id="lblTipo" text="ESTUDIANTE" style="-fx-background-color: #E3F2FD; -fx-text-fill: #1976D2; -fx-padding: 2 8; -fx-background-radius: 5; -fx-font-size: 11px;" />
+                <Label fx:id="lblEdad" text="Edad: -- años" style="-fx-text-fill: gray;" />
+                <Label fx:id="lblNacimiento" text="F. Nac: ----/--/--" style="-fx-text-fill: gray;" />
+                <Label fx:id="lblEstadoHosp" text="NO HOSPITALIZADO" style="-fx-background-color: #E8F5E9; -fx-text-fill: #2E7D32; -fx-padding: 2 10; -fx-background-radius: 12; -fx-font-size: 11px; -fx-font-weight: bold;" />
+            </HBox>
+        </VBox>
+        <VBox spacing="10">
+            <Button fx:id="btnNuevaConsulta" text="🩺 Nueva Consulta" onAction="#nuevaConsulta" styleClass="button btn-green" prefWidth="180" />
+            <Button fx:id="btnHospitalizar" text="🏥 Hospitalizar" onAction="#hospitalizar" styleClass="button btn-orange" prefWidth="180" />
+        </VBox>
+    </HBox>
+
+    <TabPane style="-fx-background-color: white; -fx-background-radius: 10;" VBox.vgrow="ALWAYS" tabClosingPolicy="UNAVAILABLE">
+        <Tab fx:id="tabConsultas" text="Consultas Médicas">
+            <VBox spacing="10" style="-fx-padding: 15;">
+                <TableView fx:id="tablaConsultas" VBox.vgrow="ALWAYS">
+                    <columns>
+                        <TableColumn fx:id="colConsFecha" text="Fecha" prefWidth="100" />
+                        <TableColumn fx:id="colConsMotivo" text="Motivo" prefWidth="150" />
+                        <TableColumn fx:id="colConsDiag" text="Diagnóstico" prefWidth="150" />
+                        <TableColumn fx:id="colConsTrat" text="Tratamiento / Receta" prefWidth="300" />
+                        <TableColumn fx:id="colConsEstado" text="Estado" prefWidth="100" />
+                    </columns>
+                    <columnResizePolicy>
+                        <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                    </columnResizePolicy>
+                </TableView>
+            </VBox>
+        </Tab>
+        <Tab text="Hospitalizaciones / Ingresos">
+            <VBox spacing="10" style="-fx-padding: 15;">
+                <TableView fx:id="tablaHospitalizaciones" VBox.vgrow="ALWAYS">
+                    <columns>
+                        <TableColumn fx:id="colHospFecha" text="Fecha" prefWidth="100" />
+                        <TableColumn fx:id="colHospMotivo" text="Motivo" prefWidth="150" />
+                        <TableColumn fx:id="colHospEstado" text="Estado" prefWidth="120" />
+                        <TableColumn fx:id="colHospSeg" text="Última Evolución" prefWidth="350" />
+                    </columns>
+                    <columnResizePolicy>
+                        <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                    </columnResizePolicy>
+                </TableView>
+            </VBox>
+        </Tab>
+        <Tab text="Signos Vitales (Triaje)">
+            <VBox spacing="10" style="-fx-padding: 15;">
+                <TableView fx:id="tablaSignosVitales" VBox.vgrow="ALWAYS">
+                    <columns>
+                        <TableColumn fx:id="colSvFecha" text="Fecha" prefWidth="120" />
+                        <TableColumn fx:id="colSvPeso" text="Peso (kg)" prefWidth="80" />
+                        <TableColumn fx:id="colSvTemp" text="Temp. (°C)" prefWidth="100" />
+                        <TableColumn fx:id="colSvPulso" text="Frec. Cardíaca (bpm)" prefWidth="150" />
+                        <TableColumn fx:id="colSvResp" text="Frec. Respiratoria (rpm)" prefWidth="160" />
+                        <TableColumn fx:id="colSvPresion" text="P. Arterial" prefWidth="120" />
+                        <TableColumn fx:id="colSvTalla" text="Talla (cm)" prefWidth="80" />
+                    </columns>
+                    <columnResizePolicy>
+                        <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                    </columnResizePolicy>
+                </TableView>
+            </VBox>
+        </Tab>
+    </TabPane>
+
+    <!-- Detalle de Consulta Seleccionada -->
+    <VBox fx:id="cajaDetalleConsulta" spacing="5" style="-fx-background-color: #FFFDE7; -fx-padding: 15; -fx-border-color: #FBC02D; -fx-border-radius: 5; -fx-background-radius: 5;" visible="false" managed="false">
+        <Label text="Detalles de la Consulta Seleccionada:" style="-fx-font-weight: bold; -fx-text-fill: #F57F17;" />
+        <GridPane hgap="10" vgap="5">
+            <Label text="Motivo:" GridPane.rowIndex="0" GridPane.columnIndex="0" style="-fx-font-weight: bold;" />
+            <Label fx:id="lblDetMotivo" wrapText="true" GridPane.rowIndex="0" GridPane.columnIndex="1" />
+            
+            <Label text="Diagnóstico:" GridPane.rowIndex="1" GridPane.columnIndex="0" style="-fx-font-weight: bold;" />
+            <Label fx:id="lblDetDiag" wrapText="true" GridPane.rowIndex="1" GridPane.columnIndex="1" />
+            
+            <Label text="Tratamiento:" GridPane.rowIndex="2" GridPane.columnIndex="0" style="-fx-font-weight: bold;" />
+            <Label fx:id="lblDetTrat" wrapText="true" GridPane.rowIndex="2" GridPane.columnIndex="1" />
+            
+            <Label text="Antecedentes:" GridPane.rowIndex="3" GridPane.columnIndex="0" style="-fx-font-weight: bold;" />
+            <Label fx:id="lblDetAnt" wrapText="true" GridPane.rowIndex="3" GridPane.columnIndex="1" />
+        </GridPane>
+    </VBox>
+
+</VBox>

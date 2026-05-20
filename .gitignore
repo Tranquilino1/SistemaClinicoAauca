@@ -1,0 +1,50 @@
+# ==========================================
+# Archivos y Carpetas Ignorados - Git
+# ==========================================
+
+# Entornos de compilación Java & Maven
+target/
+*.class
+*.jar
+*.war
+*.ear
+*.nar
+
+# Configuraciones locales de IDEs
+.idea/
+.vscode/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+.metadata/
+bin/
+tmp/
+temp/
+obj/
+
+# Archivos de sistema operativo (Windows)
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# Bases de datos SQLite locales (Evitar subir datos sensibles a producción/repositorio)
+*.db
+*.db-journal
+*.db-wal
+*.db-shm
+
+# Compilados de distribución, wrappers y empaquetados pesados en el directorio raíz
+/*.zip
+/app_bundle.zip
+/ClinicaAauca_Final.exe
+/Clinica_AAUCA.jar
+/clinica_aauca.db
+/Clinica_AAUCA_V6_HMS.jar
+
+# Carpetas de distribución generadas automáticamente
+/ClinicaAAUCA_Portable/
+/Clinica_AAUCA_V1.0_App/
+/node_modules/
+/dist_ready/
+/Nueva carpeta/

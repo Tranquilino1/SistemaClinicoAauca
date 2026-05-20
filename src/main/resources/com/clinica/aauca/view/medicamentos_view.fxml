@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox spacing="15" style="-fx-padding: 30; -fx-background-color: white;" fx:controller="com.clinica.aauca.controller.MedicamentosController" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
+    <Label text="💊 Gestión de Medicamentos y Stock" style="-fx-font-size: 22px; -fx-font-weight: bold; -fx-text-fill: #003366;"/>
+    <Separator />
+
+    <!-- Filtro búsqueda -->
+    <HBox spacing="10" alignment="CENTER_LEFT">
+        <Label text="Buscar:" style="-fx-font-weight: bold;" />
+        <TextField fx:id="txtBuscarMed" promptText="Nombre del medicamento..." prefWidth="250" />
+        <Button text="🔍 Buscar" onAction="#buscarMedicamento" styleClass="button btn-orange" />
+        <Button text="↺ Ver Todos" onAction="#verTodos" styleClass="button" />
+    </HBox>
+
+    <!-- Tabla de medicamentos -->
+    <TableView fx:id="tablaMedicamentos" VBox.vgrow="ALWAYS">
+        <columns>
+            <TableColumn fx:id="colId" text="ID" prefWidth="50" />
+            <TableColumn fx:id="colNombre" text="Nombre" prefWidth="250" />
+            <TableColumn fx:id="colStock" text="Stock" prefWidth="100" />
+            <TableColumn fx:id="colPrecio" text="Precio Unit. (FCFA)" prefWidth="130" />
+            <TableColumn fx:id="colEstado" text="Estado" prefWidth="120" />
+        </columns>
+        <columnResizePolicy>
+            <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+        </columnResizePolicy>
+    </TableView>
+
+    <Separator />
+    <Label text="Registrar / Editar Medicamento:" style="-fx-font-weight: bold; -fx-font-size: 14px;" />
+
+    <GridPane hgap="15" vgap="10">
+        <Label text="Nombre:" GridPane.columnIndex="0" GridPane.rowIndex="0" style="-fx-font-weight: bold;" />
+        <TextField fx:id="txtNombre" promptText="Nombre del medicamento" prefWidth="300" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+        
+        <Label text="Stock:" GridPane.columnIndex="0" GridPane.rowIndex="1" style="-fx-font-weight: bold;" />
+        <TextField fx:id="txtStock" promptText="Cantidad" prefWidth="100" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+        
+        <Label text="Precio (FCFA):" GridPane.columnIndex="0" GridPane.rowIndex="2" style="-fx-font-weight: bold;" />
+        <TextField fx:id="txtPrecio" promptText="Precio predeterminado" prefWidth="150" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+    </GridPane>
+
+    <Label text="* Los precios son predeterminados por el Super Admin (Administrador)." style="-fx-text-fill: #1976D2; -fx-font-size: 11px; -fx-font-weight: bold;" />
+
+    <HBox spacing="10">
+        <Button fx:id="btnGuardar" text="➕ Crear Medicamento" onAction="#guardarMedicamento" styleClass="button btn-green" prefWidth="180" />
+        <Button fx:id="btnEditar" text="✏️ Guardar Cambios" disable="true" onAction="#editarMedicamento" styleClass="button btn-orange" prefWidth="180" />
+        <Button text="🖨 Exportar Stock" onAction="#exportarStockPDF" styleClass="button btn-blue" prefWidth="180" />
+        <Button fx:id="btnEliminar" text="🗑 Eliminar" disable="true" onAction="#eliminarMedicamento" styleClass="button btn-red" prefWidth="150" />
+    </HBox>
+</VBox>

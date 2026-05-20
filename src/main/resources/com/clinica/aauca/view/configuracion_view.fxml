@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox spacing="20" style="-fx-padding: 30; -fx-background-color: white;" fx:controller="com.clinica.aauca.controller.ConfiguracionController" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
+    <Label text="⚙️ Configuración del Sistema" style="-fx-font-size: 22px; -fx-font-weight: bold; -fx-text-fill: #003366;"/>
+    <Separator />
+
+    <TabPane>
+        <Tab text="👤 Mi Perfil" closable="false">
+            <VBox spacing="15" style="-fx-padding: 20;">
+                <GridPane hgap="20" vgap="12">
+                    <Label text="Nombre de Usuario:" GridPane.columnIndex="0" GridPane.rowIndex="0" style="-fx-font-weight: bold;" />
+                    <TextField fx:id="txtPerfilUsername" prefWidth="350" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+                    <Label text="Nombre Completo:" GridPane.columnIndex="0" GridPane.rowIndex="1" style="-fx-font-weight: bold;" />
+                    <TextField fx:id="txtPerfilNombre" prefWidth="350" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                    <Label text="Rol actual (no editable):" GridPane.columnIndex="0" GridPane.rowIndex="2" style="-fx-font-weight: bold;" />
+                    <TextField fx:id="txtPerfilRol" prefWidth="350" editable="false" style="-fx-opacity: 0.7;" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                </GridPane>
+                <HBox spacing="10" alignment="CENTER_LEFT">
+                    <Label text="✨ Los cambios en tu perfil se guardan automáticamente." style="-fx-text-fill: #2ecc71; -fx-font-style: italic; -fx-font-size: 11px;" />
+                </HBox>
+            </VBox>
+        </Tab>
+        <Tab text="🏥 Información Clínica" closable="false">
+            <VBox spacing="15" style="-fx-padding: 20;">
+                <GridPane hgap="20" vgap="12">
+                    <Label text="Nombre de la Clínica:" GridPane.columnIndex="0" GridPane.rowIndex="0" style="-fx-font-weight: bold;" />
+                    <TextField fx:id="txtNombreClinica" prefWidth="350" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+                    <Label text="Dirección:" GridPane.columnIndex="0" GridPane.rowIndex="1" style="-fx-font-weight: bold;" />
+                    <TextField fx:id="txtDireccion" prefWidth="350" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                    <Label text="Teléfono:" GridPane.columnIndex="0" GridPane.rowIndex="2" style="-fx-font-weight: bold;" />
+                    <TextField fx:id="txtTelefono" prefWidth="350" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                    <Label text="Email:" GridPane.columnIndex="0" GridPane.rowIndex="3" style="-fx-font-weight: bold;" />
+                    <TextField fx:id="txtEmail" prefWidth="350" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                    <Label text="Logo (Ruta):" GridPane.columnIndex="0" GridPane.rowIndex="4" style="-fx-font-weight: bold;" />
+                    <HBox spacing="10" GridPane.columnIndex="1" GridPane.rowIndex="4">
+                        <TextField fx:id="txtLogoPath" prefWidth="250" />
+                        <Button text="📁 ..." onAction="#seleccionarLogo" />
+                    </HBox>
+                </GridPane>
+                <Button text="💾 Guardar Cambios" onAction="#guardarConfiguracion" styleClass="button btn-green" prefWidth="250" />
+            </VBox>
+        </Tab>
+        <Tab text="💰 Precios y Tarifas" closable="false">
+            <VBox spacing="20" style="-fx-padding: 30; -fx-background-color: #f0f7ff; -fx-background-radius: 10;">
+                <Label text="Gestión de Precios Globales (FCFA)" style="-fx-font-size: 16px; -fx-font-weight: bold; -fx-text-fill: #0d47a1;" />
+                <Label text="Estos precios se aplicarán por defecto a pacientes no estudiantes." style="-fx-text-fill: #555; -fx-font-style: italic;" />
+                
+                <GridPane hgap="30" vgap="20">
+                    <VBox spacing="5" GridPane.columnIndex="0" GridPane.rowIndex="0">
+                        <Label text="Consulta General:" style="-fx-font-weight: bold;" />
+                        <HBox alignment="CENTER_LEFT" spacing="10">
+                            <TextField fx:id="txtPrecioConsulta" prefWidth="150" promptText="0.0" />
+                            <Label text="FCFA" />
+                        </HBox>
+                    </VBox>
+                    
+                    <VBox spacing="5" GridPane.columnIndex="1" GridPane.rowIndex="0">
+                        <Label text="Hospitalización / Noche:" style="-fx-font-weight: bold;" />
+                        <HBox alignment="CENTER_LEFT" spacing="10">
+                            <TextField fx:id="txtPrecioHosp" prefWidth="150" promptText="0.0" />
+                            <Label text="FCFA" />
+                        </HBox>
+                    </VBox>
+                </GridPane>
+                
+                <Separator />
+                <Button text="💾 Actualizar Tarifas" onAction="#guardarPrecios" styleClass="button btn-orange" prefWidth="200" />
+            </VBox>
+        </Tab>
+        <Tab text="🔐 Seguridad" closable="false">
+            <VBox spacing="15" style="-fx-padding: 20; -fx-background-color: #FAFAFA;" alignment="CENTER">
+                <Label text="Cambiar Mi Contraseña" style="-fx-font-size: 16px; -fx-font-weight: bold;" />
+                <GridPane hgap="20" vgap="12" alignment="CENTER">
+                    <Label text="Contraseña Actual:" GridPane.columnIndex="0" GridPane.rowIndex="0" style="-fx-font-weight: bold;" />
+                    <PasswordField fx:id="txtPassActual" prefWidth="300" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+                    <Label text="Nueva Contraseña:" GridPane.columnIndex="0" GridPane.rowIndex="1" style="-fx-font-weight: bold;" />
+                    <PasswordField fx:id="txtPassNueva" prefWidth="300" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                    <Label text="Confirmar Contraseña:" GridPane.columnIndex="0" GridPane.rowIndex="2" style="-fx-font-weight: bold;" />
+                    <PasswordField fx:id="txtPassConfirmar" prefWidth="300" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                </GridPane>
+                <Button text="🔑 Actualizar Contraseña" onAction="#cambiarPassword" styleClass="button btn-orange" prefWidth="250" />
+            </VBox>
+        </Tab>
+        <Tab text="ℹ️ Acerca del Sistema" closable="false">
+            <VBox spacing="15" style="-fx-padding: 30;" alignment="CENTER">
+                <Label text="🏥 Sistema de Gestión Clínica AAUCA" style="-fx-font-size: 20px; -fx-font-weight: bold; -fx-text-fill: #003366;" />
+                <Label text="Versión 1.0 — 2026" style="-fx-text-fill: gray;" />
+                <Label text="Universidad AAUCA — Guinea Ecuatorial" style="-fx-text-fill: gray;" />
+                <Separator />
+                <Label text="Módulos Activos:" style="-fx-font-weight: bold;" />
+                <Label text="✅ Gestión de Pacientes  ✅ Consultas Médicas  ✅ Hospitalización" />
+                <Label text="✅ Medicamentos e Inventario  ✅ Historial Médico  ✅ Facturación (FCFA)" />
+                <Label text="✅ Gestión de Usuarios  ✅ Reportes Clínicos  ✅ Configuración" />
+            </VBox>
+        </Tab>
+    </TabPane>
+</VBox>

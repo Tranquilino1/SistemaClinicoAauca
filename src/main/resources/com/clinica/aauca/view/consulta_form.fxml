@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox spacing="15" style="-fx-padding: 30; -fx-background-color: white;" fx:controller="com.clinica.aauca.controller.ConsultaController" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
+    <Label text="🩺 Consulta Médica" style="-fx-font-size: 22px; -fx-font-weight: bold; -fx-text-fill: #003366;"/>
+    <Separator />
+
+    <!-- Búsqueda de paciente -->
+    <HBox spacing="10" alignment="CENTER_LEFT">
+        <Label text="HC Paciente:" style="-fx-font-weight: bold;" />
+        <TextField fx:id="txtPacienteId" promptText="ID / HC" prefWidth="100" />
+        <Button text="🔍 Verificar" onAction="#verificarPaciente" styleClass="button btn-orange" />
+        <Label fx:id="lblEstadoPaciente" text="— Sin verificar —" style="-fx-text-fill: gray; -fx-font-style: italic;" />
+        <Region HBox.hgrow="ALWAYS" />
+        <Label fx:id="lblStatusConsulta" text="Estado: —" style="-fx-font-weight: bold; -fx-padding: 5 10; -fx-background-color: #EEE; -fx-background-radius: 5;" />
+    </HBox>
+
+    <Separator />
+    
+    <!-- Signos Vitales (Cargados del Triaje) -->
+    <HBox spacing="20" style="-fx-padding: 10; -fx-background-color: #F1F8E9; -fx-background-radius: 10; -fx-border-color: #81C784; -fx-border-radius: 10;">
+        <Label text="📊 Signos Vitales (Triaje):" style="-fx-font-weight: bold; -fx-text-fill: #2E7D32;" />
+        <Label fx:id="lblSignosVitales" text="Cargando..." style="-fx-font-style: italic;" />
+    </HBox>
+
+    <Separator />
+    
+    <GridPane hgap="10" vgap="10">
+        <columnConstraints>
+            <ColumnConstraints minWidth="100" prefWidth="150" />
+            <ColumnConstraints hgrow="ALWAYS" />
+            <ColumnConstraints minWidth="100" prefWidth="150" />
+            <ColumnConstraints hgrow="ALWAYS" />
+        </columnConstraints>
+        
+        <Label text="Motivo Consulta (*):" GridPane.rowIndex="0" GridPane.columnIndex="0" />
+        <TextField fx:id="txtMotivo" promptText="Obligatorio" GridPane.rowIndex="0" GridPane.columnIndex="1" GridPane.columnSpan="3" />
+        
+        <Label text="Historia Enf. Actual:" GridPane.rowIndex="1" GridPane.columnIndex="0" />
+        <TextArea fx:id="txtHistoriaActual" prefRowCount="2" promptText="Evolución de síntomas..." GridPane.rowIndex="1" GridPane.columnIndex="1" GridPane.columnSpan="3" />
+
+        <Label text="Ant. Familiares:" GridPane.rowIndex="2" GridPane.columnIndex="0" />
+        <TextField fx:id="txtAntFamiliares" promptText="Padres, hermanos..." GridPane.rowIndex="2" GridPane.columnIndex="1" />
+        
+        <Label text="Ant. Personales:" GridPane.rowIndex="2" GridPane.columnIndex="2" />
+        <TextField fx:id="txtAntPersonales" promptText="Alergias, cirugías..." GridPane.rowIndex="2" GridPane.columnIndex="3" />
+
+        <Label text="Examen Físico:" GridPane.rowIndex="3" GridPane.columnIndex="0" />
+        <TextArea fx:id="txtExamenFisico" prefRowCount="2" promptText="Hallazgos físicos..." GridPane.rowIndex="3" GridPane.columnIndex="1" GridPane.columnSpan="3" />
+
+        <Label text="Imp. Diagnóstica (*):" GridPane.rowIndex="4" GridPane.columnIndex="0" />
+        <TextField fx:id="txtDiagnostico" promptText="Obligatorio" GridPane.rowIndex="4" GridPane.columnIndex="1" />
+        
+        <Label text="Laboratorio:" GridPane.rowIndex="4" GridPane.columnIndex="2" />
+        <TextField fx:id="txtLaboratorio" promptText="Analíticas..." GridPane.rowIndex="4" GridPane.columnIndex="3" />
+        
+        <Label text="Tratamiento Médico:" GridPane.rowIndex="5" GridPane.columnIndex="0" />
+        <TextArea fx:id="txtTratamiento" prefRowCount="2" promptText="Plan terapéutico..." GridPane.rowIndex="5" GridPane.columnIndex="1" GridPane.columnSpan="3" />
+
+        <Label text="Receta Médica:" GridPane.rowIndex="6" GridPane.columnIndex="0" />
+        <TextArea fx:id="txtReceta" prefRowCount="2" promptText="Prescripción final..." GridPane.rowIndex="6" GridPane.columnIndex="1" GridPane.columnSpan="3" />
+
+        <Label text="🎁 Farmacia (AAUCA):" GridPane.rowIndex="7" GridPane.columnIndex="0" style="-fx-text-fill: #27ae60; -fx-font-weight: bold;"/>
+        <HBox spacing="10" GridPane.rowIndex="7" GridPane.columnIndex="1" GridPane.columnSpan="3" alignment="CENTER_LEFT">
+            <ComboBox fx:id="comboMeds" promptText="Seleccionar..." prefWidth="300" />
+            <Label text="Cant:" />
+            <Spinner fx:id="spinCant" prefWidth="70" />
+            <Button text="➕ Añadir" onAction="#addMedAReceta" styleClass="button" />
+        </HBox>
+    </GridPane>
+
+    <HBox spacing="20" alignment="CENTER_LEFT">
+        <VBox fx:id="cajaFacturacion" spacing="5">
+            <Label text="Total a Cobrar (FCFA):" style="-fx-font-weight: bold;" />
+            <TextField fx:id="txtFactura" promptText="0 FCFA" />
+        </VBox>
+        <Label fx:id="lblMensajeEstudiante" text="★ ESTUDIANTE: Facturación exenta" visible="false" managed="false" style="-fx-text-fill: #1976D2; -fx-font-weight: bold;" />
+    </HBox>
+
+    <HBox spacing="10">
+        <Button fx:id="btnGuardar" text="💾 Guardar" onAction="#guardarConsulta" styleClass="button btn-green" prefWidth="150" />
+        <Button fx:id="btnImprimir" text="🖨 Imprimir PDF" onAction="#imprimirConsulta" styleClass="button btn-orange" prefWidth="150" />
+        <Button fx:id="btnEditar" text="✏ Editar" onAction="#editarConsulta" styleClass="button btn-blue" prefWidth="150" />
+        <Button fx:id="btnEliminar" text="🧹 Vaciar Formulario" onAction="#limpiarCamposFormulario" styleClass="button btn-red" prefWidth="180" />
+    </HBox>
+
+    <Separator />
+    
+    <!-- Lista de consultas existentes abajo -->
+    <Label text="Historial de Consultas (Seleccione para cargar):" style="-fx-font-weight: bold; -fx-font-size: 14px;" />
+    <TableView fx:id="tablaConsultas" VBox.vgrow="ALWAYS" prefHeight="250">
+        <columns>
+            <TableColumn fx:id="colConsultaId" text="Código" prefWidth="100" />
+            <TableColumn fx:id="colMotivo" text="Motivo de Consulta" prefWidth="250" />
+            <TableColumn fx:id="colFecha" text="Fecha" prefWidth="150" />
+        </columns>
+        <columnResizePolicy>
+            <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+        </columnResizePolicy>
+    </TableView>
+</VBox>

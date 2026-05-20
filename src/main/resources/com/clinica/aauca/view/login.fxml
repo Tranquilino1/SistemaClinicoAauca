@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.image.*?>
+<?import de.jensd.fx.glyphs.fontawesome.*?>
+
+<StackPane prefHeight="500.0" prefWidth="800.0" 
+           styleClass="login-bg"
+           stylesheets="@../css/style.css" 
+           xmlns="http://javafx.com/javafx/17" 
+           xmlns:fx="http://javafx.com/fxml/1" 
+           fx:controller="com.clinica.aauca.controller.LoginController">
+
+    <children>
+        <!-- Contenedor del Login con sombra y bordes redondeados -->
+        <VBox alignment="CENTER" maxWidth="380.0" spacing="25.0" styleClass="login-container">
+            
+            <!-- Logo e Información del Sistema -->
+            <VBox alignment="CENTER" spacing="10.0">
+                <ImageView fx:id="imgLogo" fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@../images/aauca_logo.png" />
+                    </image>
+                </ImageView>
+                <Label styleClass="label-title" text="CLÍNICA AAUCA" />
+                <Label styleClass="label-subtitle" text="Sistema de Gestión Médica Profesional" />
+            </VBox>
+
+            <!-- Campo: Usuario -->
+            <HBox alignment="CENTER_LEFT" spacing="10.0">
+                <FontAwesomeIconView glyphName="USER" size="18" styleClass="icon-view" />
+                <TextField fx:id="txtUsername" promptText="Nombre de usuario" HBox.hgrow="ALWAYS" />
+            </HBox>
+
+            <!-- Campo: Password -->
+            <VBox spacing="5.0">
+                <HBox alignment="CENTER_LEFT" spacing="10.0">
+                    <FontAwesomeIconView glyphName="LOCK" size="18" styleClass="icon-view" />
+                    <PasswordField fx:id="txtPassword" onAction="#handleLogin" promptText="Contraseña" HBox.hgrow="ALWAYS" />
+                </HBox>
+            </VBox>
+
+            <!-- Botón de Inicio de Sesión -->
+            <Button fx:id="btnLogin" onAction="#handleLogin" prefWidth="1000.0" styleClass="button-primary" text="INICIAR SESIÓN" />
+
+            <!-- Mensaje de Error (Inicialmente oculto) -->
+            <Label fx:id="lblError" styleClass="label-error" text="Credenciales incorrectas. Verifique e intente de nuevo." visible="false" wrapText="true" />
+            
+            <Separator prefWidth="200.0" />
+            
+            <!-- Pie de página suave -->
+            <Label styleClass="label-subtitle" text="© 2026 Clínica Aauca v1.0" />
+            
+        </VBox>
+    </children>
+
+</StackPane>
