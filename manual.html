@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Manual de Usuario | Sistema Clínico AAUCA</title>
+  
+  <!-- SEO Meta Tags -->
+  <meta name="description" content="Manual de usuario interactivo en PDF para el Sistema Clínico AAUCA. Aprenda a configurar triajes, expedientes médicos, recetas y control de stock farmacéutico.">
+  <meta name="keywords" content="Clínica AAUCA, Manual de Usuario, ayuda médica, software clínico">
+  
+  <!-- Google Fonts & Símbolos -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet" />
+  
+  <!-- Estilos compartidos -->
+  <link rel="stylesheet" href="style.css">
+  
+  <style>
+    /* Estilos específicos para la Landing del Manual */
+    .manual-hero {
+      min-height: 100vh;
+      padding-top: 120px;
+      padding-bottom: 60px;
+      display: flex;
+      align-items: center;
+      position: relative;
+      background: radial-gradient(circle at 20% 30%, rgba(139, 92, 246, 0.05) 0%, transparent 60%);
+    }
+
+    .manual-grid {
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      gap: 32px;
+      align-items: stretch;
+      width: 100%;
+    }
+
+    .manual-info-panel {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+      justify-content: center;
+    }
+
+    .btn-back {
+      align-self: flex-start;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--text-secondary);
+      text-decoration: none;
+      font-size: 0.88rem;
+      font-weight: 500;
+      transition: color var(--transition-fast);
+      padding: 6px 12px;
+      background: rgba(255,255,255,0.02);
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+    }
+
+    .btn-back:hover {
+      color: var(--color-cyan);
+      border-color: rgba(6, 182, 212, 0.3);
+      background: rgba(6, 182, 212, 0.05);
+    }
+
+    .manual-title {
+      font-family: var(--font-display);
+      font-size: 2.5rem;
+      font-weight: 800;
+      line-height: 1.2;
+    }
+
+    .manual-desc {
+      font-size: 0.95rem;
+      color: var(--text-secondary);
+    }
+
+    .manual-features {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .manual-features li {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 0.88rem;
+      color: var(--text-secondary);
+    }
+
+    .manual-features li span {
+      font-size: 20px;
+    }
+
+    .manual-viewer-panel {
+      position: relative;
+      border-radius: 18px;
+      overflow: hidden;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
+      height: 680px;
+      background: rgba(9, 13, 23, 0.6);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .viewer-header {
+      height: 48px;
+      background: rgba(9, 13, 23, 0.9);
+      border-bottom: 1px solid var(--border-color);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 20px;
+    }
+
+    .viewer-title {
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--text-secondary);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .viewer-title span {
+      font-size: 16px;
+    }
+
+    .viewer-frame {
+      width: 100%;
+      height: calc(100% - 48px);
+      border: none;
+      background: #ffffff;
+    }
+
+    .viewer-fallback {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100%;
+      color: var(--text-secondary);
+      padding: 40px;
+      text-align: center;
+      gap: 20px;
+      background: rgba(6, 9, 17, 0.8);
+    }
+
+    .viewer-fallback-icon {
+      font-size: 64px !important;
+    }
+
+    @media (max-width: 1024px) {
+      .manual-grid {
+        grid-template-columns: 1fr;
+        gap: 48px;
+      }
+      .manual-viewer-panel {
+        height: 600px;
+      }
+    }
+  </style>
+</head>
+<body class="dark-theme">
+
+  <!-- Cabecera de Navegación -->
+  <header class="navbar glass-container">
+    <div class="nav-container">
+      <div class="nav-brand">
+        <span class="material-symbols-outlined brand-icon">clinical_notes</span>
+        <div class="brand-text">
+          <h2>Clínica <span class="brand-gradient">AAUCA</span></h2>
+          <span class="brand-sub">Manual de Usuario</span>
+        </div>
+      </div>
+      
+      <nav class="nav-links">
+        <a href="index.html#inicio">Inicio</a>
+        <a href="index.html#modulos">Módulos</a>
+        <a href="index.html#instalacion">Instalación</a>
+        <a href="index.html#descargar">Descarga</a>
+      </nav>
+      
+      <div class="nav-actions">
+        <a href="https://github.com/Tranquilino1/SistemaClinicoAauca/releases/download/v1.0.0/Manual_Usuario_ClinicaAauca.pdf" class="btn btn-nav-cta ripple" download>
+          <span class="material-symbols-outlined">download</span>
+          <span>Descargar PDF</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- SECCIÓN HERO DEL MANUAL -->
+  <section class="manual-hero">
+    <div class="hero-bg-glow" style="background: radial-gradient(circle, rgba(139, 92, 246, 0.04) 0%, transparent 70%);"></div>
+    <div class="container">
+      
+      <div class="manual-grid">
+        
+        <!-- Panel Izquierdo: Información y Guías -->
+        <div class="manual-info-panel">
+          <a href="index.html" class="btn-back">
+            <span class="material-symbols-outlined">arrow_back</span>
+            <span>Volver al Inicio</span>
+          </a>
+          
+          <div class="hero-badge animate-pulse-border">
+            <span class="material-symbols-outlined badge-icon text-violet">description</span>
+            <span>Documento Técnico Oficial</span>
+          </div>
+          
+          <h1 class="manual-title">Manual de <span class="text-gradient" style="background: linear-gradient(135deg, var(--color-violet) 0%, var(--color-cyan) 100%);">Usuario</span></h1>
+          <p class="manual-desc">Guía detallada de operación clínica para el uso correcto del Sistema de Gestión de Clínica AAUCA. Aprenda paso a paso cómo administrar las actividades médicas.</p>
+          
+          <ul class="manual-features">
+            <li>
+              <span class="material-symbols-outlined text-green">check_circle</span>
+              <span>Procedimientos detallados de Triaje y Admisión</span>
+            </li>
+            <li>
+              <span class="material-symbols-outlined text-green">check_circle</span>
+              <span>Instrucciones de Consulta Médica e Historias Clínicas</span>
+            </li>
+            <li>
+              <span class="material-symbols-outlined text-green">check_circle</span>
+              <span>Guía de Inventario de Fármacos y Alertas de Stock</span>
+            </li>
+            <li>
+              <span class="material-symbols-outlined text-green">check_circle</span>
+              <span>Requisitos del Sistema e Instalación en Red</span>
+            </li>
+          </ul>
+          
+          <div class="hero-actions" style="margin-bottom: 0;">
+            <a href="https://github.com/Tranquilino1/SistemaClinicoAauca/releases/download/v1.0.0/Manual_Usuario_ClinicaAauca.pdf" class="btn btn-primary ripple" style="background: linear-gradient(135deg, var(--color-violet) 0%, var(--color-cyan) 100%); box-shadow: 0 4px 20px rgba(139, 92, 246, 0.3);" download>
+              <span class="material-symbols-outlined">download</span>
+              <div class="btn-double-text">
+                <span class="btn-main-txt">Descargar Manual</span>
+                <span class="btn-sub-txt">PDF Oficial | 2.4 MB</span>
+              </div>
+            </a>
+          </div>
+        </div>
+        
+        <!-- Panel Derecho: Visor de PDF Integrado (Landing de PDF) -->
+        <div class="manual-viewer-panel glass-container">
+          <div class="viewer-header">
+            <div class="viewer-title">
+              <span class="material-symbols-outlined text-violet">picture_as_pdf</span>
+              <span>Manual_Usuario_ClinicaAauca.pdf</span>
+            </div>
+            <div class="mockup-dots" style="margin-left: auto;">
+              <span class="dot dot-red"></span>
+              <span class="dot dot-yellow"></span>
+              <span class="dot dot-green"></span>
+            </div>
+          </div>
+          
+          <!-- Visor de PDF embebido -->
+          <object data="https://github.com/Tranquilino1/SistemaClinicoAauca/releases/download/v1.0.0/Manual_Usuario_ClinicaAauca.pdf" type="application/pdf" class="viewer-frame">
+            <iframe src="https://docs.google.com/gview?url=https://github.com/Tranquilino1/SistemaClinicoAauca/releases/download/v1.0.0/Manual_Usuario_ClinicaAauca.pdf&embedded=true" class="viewer-frame">
+              <div class="viewer-fallback">
+                <span class="material-symbols-outlined viewer-fallback-icon text-red">warning</span>
+                <h3>No pudimos embeber el PDF en su navegador</h3>
+                <p>Para ver el manual en línea, haga clic en el botón inferior para abrirlo directamente o descargarlo en su computadora.</p>
+                <a href="https://github.com/Tranquilino1/SistemaClinicoAauca/releases/download/v1.0.0/Manual_Usuario_ClinicaAauca.pdf" target="_blank" class="btn btn-primary">
+                  <span class="material-symbols-outlined">open_in_new</span>
+                  <span>Abrir Manual en PDF</span>
+                </a>
+              </div>
+            </iframe>
+          </object>
+        </div>
+        
+      </div>
+      
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container footer-container">
+      <div class="footer-left">
+        <div class="nav-brand">
+          <span class="material-symbols-outlined brand-icon text-cyan">clinical_notes</span>
+          <h2>Clínica <span class="brand-gradient">AAUCA</span></h2>
+        </div>
+        <p class="footer-desc">Solución de software médico de alta fidelidad, ligero, rápido y seguro. Comprometidos con el desarrollo libre y la excelencia operativa clínica.</p>
+      </div>
+      
+      <div class="footer-links-grid">
+        <div class="footer-link-group">
+          <h4>Navegación</h4>
+          <a href="index.html#inicio">Inicio</a>
+          <a href="index.html#modulos">Módulos</a>
+          <a href="index.html#instalacion">Instalación</a>
+          <a href="index.html#descargar">Descargar</a>
+        </div>
+        <div class="footer-link-group">
+          <h4>Recursos</h4>
+          <a href="https://github.com/Tranquilino1/SistemaClinicoAauca/releases/download/v1.0.0/Manual_Usuario_ClinicaAauca.pdf" target="_blank">Manual de Usuario</a>
+          <a href="https://github.com/Tranquilino1/SistemaClinicoAauca/releases" target="_blank">Releases GitHub</a>
+          <a href="https://github.com/Tranquilino1/SistemaClinicoAauca" target="_blank">Código Fuente</a>
+        </div>
+      </div>
+    </div>
+    
+    <div class="footer-bottom text-center">
+      <p>&copy; 2026 Clínica AAUCA. Todos los derechos reservados. Desarrollado bajo licenciamiento abierto.</p>
+    </div>
+  </footer>
+
+</body>
+</html>
