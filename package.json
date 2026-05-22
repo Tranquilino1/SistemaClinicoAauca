@@ -1,0 +1,11 @@
+{
+  "name": "clinica-aauca-landing-page",
+  "version": "1.0.0",
+  "description": "Premium Landing Page for Clínica AAUCA Clinical System",
+  "main": "index.html",
+  "scripts": {
+    "dev": "npx -y serve . -l 5001"
+  },
+  "dependencies": {},
+  "devDependencies": {}
+}

@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sistema Clínico AAUCA | Plataforma Médica de Vanguardia</title>
+  
+  <!-- SEO Meta Tags -->
+  <meta name="description" content="Descargue el Sistema Clínico AAUCA. La plataforma médica más avanzada para optimizar triajes, consultas, recetas, farmacia y hospitalización con interfaz premium de alta tecnología.">
+  <meta name="keywords" content="Clínica AAUCA, Sistema Clínico, software médico, historias clínicas, triaje, gestión hospitalaria, farmacia médica">
+  
+  <!-- Google Fonts: Outfit (Titulares) e Inter (Lectura) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+  
+  <!-- Google Material Symbols (Iconos médicos y de descarga) -->
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet" />
+  
+  <!-- Estilos de la aplicación -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="dark-theme">
+  
+  <!-- Cabecera de Navegación -->
+  <header class="navbar glass-container">
+    <div class="nav-container">
+      <div class="nav-brand">
+        <span class="material-symbols-outlined brand-icon">clinical_notes</span>
+        <div class="brand-text">
+          <h2>Clínica <span class="brand-gradient">AAUCA</span></h2>
+          <span class="brand-sub">Sistema de Gestión</span>
+        </div>
+      </div>
+      
+      <nav class="nav-links">
+        <a href="#inicio" class="active">Inicio</a>
+        <a href="#modulos">Módulos</a>
+        <a href="#instalacion">Instalación</a>
+        <a href="#descargar">Descarga</a>
+      </nav>
+      
+      <div class="nav-actions">
+        <a href="https://github.com/Tranquilino1/SistemaClinicoAauca/releases/download/v1.0.0/ClinicaAauca_Setup.exe" class="btn btn-nav-cta ripple">
+          <span class="material-symbols-outlined">download</span>
+          <span>Instalar Setup</span>
+        </a>
+      </div>
+    </div>
+  </header>
+  
+  <!-- SECCIÓN HERO -->
+  <section id="inicio" class="hero-section">
+    <div class="hero-bg-glow"></div>
+    <div class="container hero-container">
+      <div class="hero-content">
+        <div class="hero-badge animate-pulse-border">
+          <span class="material-symbols-outlined badge-icon text-cyan">verified</span>
+          <span>Versión Oficial v1.0.0 Disponible</span>
+        </div>
+        
+        <h1 class="hero-title">La Revolución Tecnológica en <span class="text-gradient">Gestión Médica</span></h1>
+        <p class="hero-subtitle">Optimice historias clínicas, triajes, recetas y el control de inventarios farmacéuticos con una interfaz táctil ultra-rápida, segura y robusta diseñada para profesionales exigentes.</p>
+        
+        <div class="hero-actions">
+          <a href="https://github.com/Tranquilino1/SistemaClinicoAauca/releases/download/v1.0.0/ClinicaAauca_Setup.exe" class="btn btn-primary ripple" id="btn-hero-setup">
+            <span class="material-symbols-outlined">download</span>
+            <div class="btn-double-text">
+              <span class="btn-main-txt">Instalador Windows</span>
+              <span class="btn-sub-txt">Recomendado (.exe)</span>
+            </div>
+          </a>
+          
+          <a href="https://github.com/Tranquilino1/SistemaClinicoAauca/releases/download/v1.0.0/ClinicaAauca_Final.exe" class="btn btn-outline ripple" id="btn-hero-portable">
+            <span class="material-symbols-outlined">box</span>
+            <div class="btn-double-text">
+              <span class="btn-main-txt">Versión Portable</span>
+              <span class="btn-sub-txt">Sin instalación (.exe)</span>
+            </div>
+          </a>
+        </div>
+        
+        <div class="hero-stats">
+          <div class="stat-item">
+            <span class="stat-number" id="simulated-downloads">1,248</span>
+            <span class="stat-label">Descargas Hoy</span>
+          </div>
+          <div class="stat-divider"></div>
+          <div class="stat-item">
+            <span class="stat-number">99.9%</span>
+            <span class="stat-label">Disponibilidad</span>
+          </div>
+          <div class="stat-divider"></div>
+          <div class="stat-item">
+            <span class="stat-number">&lt; 150ms</span>
+            <span class="stat-label">Latencia de Carga</span>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Mockup Interactivo de la GUI del Software -->
+      <div class="hero-mockup-wrapper">
+        <div class="mockup-frame glass-container">
+          <div class="mockup-header">
+            <div class="mockup-dots">
+              <span class="dot dot-red"></span>
+              <span class="dot dot-yellow"></span>
+              <span class="dot dot-green"></span>
+            </div>
+            <div class="mockup-address">
+              <span class="material-symbols-outlined icon-address">lock</span>
+              <span>clinica-aauca.app/escritorio</span>
+            </div>
+          </div>
+          
+          <div class="mockup-body">
+            <!-- Menú lateral del mockup -->
+            <div class="mockup-sidebar">
+              <div class="m-profile">
+                <div class="m-avatar">Dr</div>
+                <div class="m-profile-info">
+                  <span class="m-name">Dr. Francisco M.</span>
+                  <span class="m-role">Médico General</span>
+                </div>
+              </div>
+              <div class="m-menu">
+                <button class="m-menu-item active" data-tab="m-tab-dashboard">
+                  <span class="material-symbols-outlined">dashboard</span> Panel General
+                </button>
+                <button class="m-menu-item" data-tab="m-tab-triaje">
+                  <span class="material-symbols-outlined">emergency</span> Triaje Rápido
+                </button>
+                <button class="m-menu-item" data-tab="m-tab-consultas">
+                  <span class="material-symbols-outlined">stethoscope</span> Consulta Médica
+                </button>
+                <button class="m-menu-item" data-tab="m-tab-farmacia">
+                  <span class="material-symbols-outlined">vaccines</span> Inventario Farmacia
+                </button>
+              </div>
+            </div>
+            
+            <!-- Contenido dinámico del mockup -->
+            <div class="mockup-content">
+              
+              <!-- PESTAÑA: Panel General -->
+              <div class="mockup-tab-content active" id="m-tab-dashboard">
+                <div class="m-content-header">
+                  <h3>Panel de Control Clínico</h3>
+                  <span class="m-date">Mayo 2026</span>
+                </div>
+                <div class="m-dashboard-grid">
+                  <div class="m-metric-card glass-container">
+                    <span class="m-m-label">Pacientes en Espera</span>
+                    <span class="m-m-value text-glow-cyan">14</span>
+                    <span class="m-m-trend text-green">↑ 3 urgencias</span>
+                  </div>
+                  <div class="m-metric-card glass-container">
+                    <span class="m-m-label">Camas Ocupadas</span>
+                    <span class="m-m-value text-glow-violet">85%</span>
+                    <span class="m-m-trend text-warning">2 disponibles</span>
+                  </div>
+                  <div class="m-metric-card glass-container">
+                    <span class="m-m-label">Recetas Despachadas</span>
+                    <span class="m-m-value text-glow-green">142</span>
+                    <span class="m-m-trend text-green">100% de éxito</span>
+                  </div>
+                </div>
+                
+                <div class="m-section-card glass-container">
+                  <h4>Lista de Espera en Triaje</h4>
+                  <div class="m-table-wrapper">
+                    <table class="m-table">
+                      <thead>
+                        <tr>
+                          <th>Paciente</th>
+                          <th>Síntomas</th>
+                          <th>Prioridad</th>
+                          <th>Acción</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>Carlos Gómez Ortiz</td>
+                          <td>Fiebre alta, dolor muscular</td>
+                          <td><span class="m-badge-priority priority-orange">Amarilla</span></td>
+                          <td><button class="m-table-btn">Atender</button></td>
+                        </tr>
+                        <tr>
+                          <td>María Elena Rojas</td>
+                          <td>Dificultad respiratoria moderada</td>
+                          <td><span class="m-badge-priority priority-red">Roja (Urgente)</span></td>
+                          <td><button class="m-table-btn btn-table-active">Atender</button></td>
+                        </tr>
+                        <tr>
+                          <td>Jorge V. Silva</td>
+                          <td>Dolor de cabeza leve</td>
+                          <td><span class="m-badge-priority priority-green">Verde</span></td>
+                          <td><button class="m-table-btn">Atender</button></td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+              
+              <!-- PESTAÑA: Triaje Rápido -->
+              <div class="mockup-tab-content" id="m-tab-triaje">
+                <div class="m-content-header">
+                  <h3>Módulo de Triaje de Emergencias</h3>
+                  <span class="m-date">Registro Inmediato</span>
+                </div>
+                <div class="m-form-layout glass-container">
+                  <div class="m-form-row">
+                    <div class="m-input-group">
+                      <label>Nombre del Paciente</label>
+                      <input type="text" value="Sofía Alarcón Medina" readonly>
+                    </div>
+                    <div class="m-input-group">
+                      <label>Cédula / ID</label>
+                      <input type="text" value="093123849-0" readonly>
+                    </div>
+                  </div>
+                  <div class="m-form-row">
+                    <div class="m-input-group">
+                      <label>Presión Arterial</label>
+                      <input type="text" value="120/80 mmHg" readonly>
+                    </div>
+                    <div class="m-input-group">
+                      <label>Temperatura</label>
+                      <input type="text" value="38.4 °C (Fiebre)" readonly class="input-warn">
+                    </div>
+                    <div class="m-input-group">
+                      <label>Frecuencia Cardíaca</label>
+                      <input type="text" value="84 lpm" readonly>
+                    </div>
+                  </div>
+                  <div class="m-input-group">
+                    <label>Observaciones de Triaje</label>
+                    <textarea rows="3" readonly>Paciente presenta dolor abdominal agudo en fosa ilíaca derecha, acompañado de náuseas leves y picos febriles en las últimas 4 horas.</textarea>
+                  </div>
+                  <div class="m-form-actions">
+                    <button class="m-btn-form btn-form-outline" type="button">Limpiar</button>
+                    <button class="m-btn-form btn-form-primary" type="button">Asignar Consulta Médica</button>
+                  </div>
+                </div>
+              </div>
+              
+              <!-- PESTAÑA: Consulta Médica -->
+              <div class="mockup-tab-content" id="m-tab-consultas">
+                <div class="m-content-header">
+                  <h3>Módulo de Consulta Médica Interna</h3>
+                  <span class="m-date">Historia Clínica Digital</span>
+                </div>
+                <div class="m-consultas-view">
+                  <div class="m-sidebar-records glass-container">
+                    <h5>Pacientes en Cola</h5>
+                    <div class="m-record-item active">
+                      <span class="m-record-name">María Elena Rojas</span>
+                      <span class="m-record-sub">ID: 092994801</span>
+                    </div>
+                    <div class="m-record-item">
+                      <span class="m-record-name">Carlos Gómez Ortiz</span>
+                      <span class="m-record-sub">ID: 172904812</span>
+                    </div>
+                  </div>
+                  <div class="m-record-details glass-container">
+                    <div class="m-record-header">
+                      <h4>Diagnóstico y Recetario Digital</h4>
+                      <span class="badge badge-accent">Abierta</span>
+                    </div>
+                    <div class="m-input-group">
+                      <label>Diagnóstico Primario (CIE-10)</label>
+                      <input type="text" value="J20.9 - Bronquitis aguda, no especificada" readonly>
+                    </div>
+                    <div class="m-input-group">
+                      <label>Tratamiento / Receta de Medicamentos</label>
+                      <textarea rows="4" readonly>1. Amoxicilina 500mg - Tomar 1 tableta cada 8 horas por 7 días.
+2. Paracetamol 1g - Tomar 1 tableta cada 6 horas en caso de dolor o fiebre.
+3. Salbutamol Inhalador - Realizar 2 pufs cada 6 horas si presenta tos seca.</textarea>
+                    </div>
+                    <div class="m-form-actions">
+                      <button class="m-btn-form btn-form-primary" type="button">Firmar Receta & Guardar</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
+              <!-- PESTAÑA: Farmacia -->
+              <div class="mockup-tab-content" id="m-tab-farmacia">
+                <div class="m-content-header">
+                  <h3>Control de Stock e Inventarios</h3>
+                  <span class="m-date">Farmacia Central</span>
+                </div>
+                <div class="m-section-card glass-container">
+                  <div class="m-table-header-row">
+                    <h4>Inventario de Fármacos</h4>
+                    <button class="m-btn-form btn-form-outline" style="padding: 4px 10px; font-size:0.75rem;">+ Agregar</button>
+                  </div>
+                  <div class="m-table-wrapper">
+                    <table class="m-table">
+                      <thead>
+                        <tr>
+                          <th>Medicamento</th>
+                          <th>Stock Disponible</th>
+                          <th>Almacén</th>
+                          <th>Estado</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>Amoxicilina 500mg (Caja)</td>
+                          <td>142 unidades</td>
+                          <td>Estante A-4</td>
+                          <td><span class="m-badge-priority priority-green">Óptimo</span></td>
+                        </tr>
+                        <tr>
+                          <td>Paracetamol 1g (Caja)</td>
+                          <td>8 unidades</td>
+                          <td>Estante B-1</td>
+                          <td><span class="m-badge-priority priority-red">Stock Crítico</span></td>
+                        </tr>
+                        <tr>
+                          <td>Ibuprofeno 400mg (Caja)</td>
+                          <td>340 unidades</td>
+                          <td>Estante A-2</td>
+                          <td><span class="m-badge-priority priority-green">Óptimo</span></td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+              
+            </div>
+          </div>
+        </div>
+        <div class="mockup-glow"></div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- SECCIÓN DE MÓDULOS (CARACTERÍSTICAS) -->
+  <section id="modulos" class="features-section">
+    <div class="container">
+      <div class="section-header text-center">
+        <span class="section-tag">Capacidades del Sistema</span>
+        <h2 class="section-title">Módulos Integrados del Software</h2>
+        <p class="section-subtitle">Diseñado con un enfoque departamental estricto para conectar la clínica de extremo a extremo.</p>
+      </div>
+      
+      <div class="features-grid">
+        <!-- Tarjeta 1: Triaje -->
+        <div class="feature-card glass-container ripple">
+          <div class="feature-icon bg-cyan-glow">
+            <span class="material-symbols-outlined text-cyan">emergency</span>
+          </div>
+          <h3>Triaje de Emergencias</h3>
+          <p>Clasificación rápida de pacientes en 5 escalas de prioridad médica (Manchester adaptada). Optimiza los tiempos de espera bajo situaciones críticas.</p>
+          <div class="feature-tag-list">
+            <span class="f-tag">Manchester</span>
+            <span class="f-tag">Signos Vitales</span>
+          </div>
+        </div>
+        
+        <!-- Tarjeta 2: Consulta Médica -->
+        <div class="feature-card glass-container ripple">
+          <div class="feature-icon bg-violet-glow">
+            <span class="material-symbols-outlined text-violet">stethoscope</span>
+          </div>
+          <h3>Consulta y Recetas</h3>
+          <p>Creación ágil de expedientes clínicos, evolución médica e impresión/firma de recetas médicas digitales integradas con la base de fármacos.</p>
+          <div class="feature-tag-list">
+            <span class="f-tag">CIE-10</span>
+            <span class="f-tag">Recetario PDF</span>
+          </div>
+        </div>
+        
+        <!-- Tarjeta 3: Hospitalización -->
+        <div class="feature-card glass-container ripple">
+          <div class="feature-icon bg-blue-glow">
+            <span class="material-symbols-outlined text-blue">bedroom_parent</span>
+          </div>
+          <h3>Hospitalización</h3>
+          <p>Mapeo gráfico interactivo de la ocupación de camas clínicas, asignaciones de enfermería, evolución interna e inventario de pabellón.</p>
+          <div class="feature-tag-list">
+            <span class="f-tag">Camas Clínicas</span>
+            <span class="f-tag">Altas Médicas</span>
+          </div>
+        </div>
+        
+        <!-- Tarjeta 4: Farmacia -->
+        <div class="feature-card glass-container ripple">
+          <div class="feature-icon bg-green-glow">
+            <span class="material-symbols-outlined text-green">vaccines</span>
+          </div>
+          <h3>Farmacia & Inventario</h3>
+          <p>Control estricto de medicamentos con alertas automáticas de desabastecimiento, lotes próximos a vencer y control de dispensas por receta.</p>
+          <div class="feature-tag-list">
+            <span class="f-tag">Alertas Stock</span>
+            <span class="f-tag">Lotes / Vencimiento</span>
+          </div>
+        </div>
+        
+        <!-- Tarjeta 5: Seguridad y Roles -->
+        <div class="feature-card glass-container ripple">
+          <div class="feature-icon bg-yellow-glow">
+            <span class="material-symbols-outlined text-yellow">admin_panel_settings</span>
+          </div>
+          <h3>Seguridad de Datos</h3>
+          <p>Restricciones de privilegios según rol (Médicos, Enfermeros, Farmacéuticos, Administradores). Auditoría y encriptación de datos de pacientes.</p>
+          <div class="feature-tag-list">
+            <span class="f-tag">Autenticación</span>
+            <span class="f-tag">Logs Auditoría</span>
+          </div>
+        </div>
+        
+        <!-- Tarjeta 6: Ligero & Portable -->
+        <div class="feature-card glass-container ripple">
+          <div class="feature-icon bg-red-glow">
+            <span class="material-symbols-outlined text-red">bolt</span>
+          </div>
+          <h3>Alto Rendimiento</h3>
+          <p>Desarrollado en arquitectura nativa para Windows, consumiendo menos de 60 MB de memoria RAM con bases de datos encriptadas ultraligeras.</p>
+          <div class="feature-tag-list">
+            <span class="f-tag">Windows Nativo</span>
+            <span class="f-tag">SQLite Encriptado</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- SECCIÓN DE INSTALACIÓN -->
+  <section id="instalacion" class="installation-section">
+    <div class="container">
+      <div class="section-header text-center">
+        <span class="section-tag">Guía de Inicio</span>
+        <h2 class="section-title">Instalación en 3 Simples Pasos</h2>
+        <p class="section-subtitle">Tenga el sistema clínico operativo en sus estaciones de trabajo de Windows en menos de 2 minutos.</p>
+      </div>
+      
+      <div class="timeline-wrapper">
+        <div class="timeline-progress">
+          <div class="timeline-progress-fill" id="timeline-progress-fill"></div>
+        </div>
+        
+        <div class="timeline-nodes">
+          <!-- Paso 1 -->
+          <div class="timeline-node active" id="node-step-1">
+            <div class="node-marker">1</div>
+            <div class="node-content glass-container">
+              <span class="material-symbols-outlined node-icon text-cyan">download</span>
+              <h4>Descarga Segura</h4>
+              <p>Haga clic en el botón de descarga del instalador <strong>Setup</strong>. El ejecutable se descargará directamente desde nuestros repositorios encriptados en GitHub.</p>
+            </div>
+          </div>
+          
+          <!-- Paso 2 -->
+          <div class="timeline-node" id="node-step-2">
+            <div class="node-marker">2</div>
+            <div class="node-content glass-container">
+              <span class="material-symbols-outlined node-icon text-violet">double_arrow</span>
+              <h4>Asistente de Windows</h4>
+              <p>Abra el instalador <code>ClinicaAauca_Setup.exe</code>. Al ser una aplicación nueva, si Windows SmartScreen muestra un aviso, haga clic en <em>"Más información"</em> y luego en <em>"Ejecutar de todas formas"</em>.</p>
+            </div>
+          </div>
+          
+          <!-- Paso 3 -->
+          <div class="timeline-node" id="node-step-3">
+            <div class="node-marker">3</div>
+            <div class="node-content glass-container">
+              <span class="material-symbols-outlined node-icon text-green">clinical_notes</span>
+              <h4>Configuración Inicial</h4>
+              <p>El sistema se iniciará de forma automática. Complete los datos básicos de su clínica y cree la cuenta del Administrador Principal para comenzar a operar inmediatamente.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- SECCIÓN DE DESCARGA FINAL -->
+  <section id="descargar" class="download-section">
+    <div class="download-bg-glow"></div>
+    <div class="container text-center">
+      <div class="download-box glass-container animate-pulse-border">
+        <span class="material-symbols-outlined download-box-icon text-gradient">cloud_download</span>
+        <h2>¿Listo para digitalizar su clínica?</h2>
+        <p>Descargue ahora el Sistema Clínico AAUCA de forma totalmente gratuita y revolucione la gestión médica de su institución.</p>
+        
+        <div class="download-buttons-group">
+          <a href="https://github.com/Tranquilino1/SistemaClinicoAauca/releases/download/v1.0.0/ClinicaAauca_Setup.exe" class="btn btn-primary ripple">
+            <span class="material-symbols-outlined">download</span>
+            <div class="btn-double-text text-left">
+              <span class="btn-main-txt">Instalador Completo</span>
+              <span class="btn-sub-txt">Setup.exe | 42 MB</span>
+            </div>
+          </a>
+          
+          <a href="https://github.com/Tranquilino1/SistemaClinicoAauca/releases/download/v1.0.0/ClinicaAauca_Final.exe" class="btn btn-outline ripple">
+            <span class="material-symbols-outlined">box</span>
+            <div class="btn-double-text text-left">
+              <span class="btn-main-txt">Versión Portable</span>
+              <span class="btn-sub-txt">Portable.exe | 38 MB</span>
+            </div>
+          </a>
+        </div>
+        
+        <div class="manual-download-banner">
+          <span class="material-symbols-outlined text-cyan">description</span>
+          <span>¿Tiene dudas sobre el uso del software? Descargue el <a href="https://github.com/Tranquilino1/SistemaClinicoAauca/releases/download/v1.0.0/Manual_Usuario_ClinicaAauca.pdf" target="_blank" class="manual-link">Manual de Usuario Oficial (PDF)</a></span>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container footer-container">
+      <div class="footer-left">
+        <div class="nav-brand">
+          <span class="material-symbols-outlined brand-icon text-cyan">clinical_notes</span>
+          <h2>Clínica <span class="brand-gradient">AAUCA</span></h2>
+        </div>
+        <p class="footer-desc">Solución de software médico de alta fidelidad, ligero, rápido y seguro. Comprometidos con el desarrollo libre y la excelencia operativa clínica.</p>
+      </div>
+      
+      <div class="footer-links-grid">
+        <div class="footer-link-group">
+          <h4>Navegación</h4>
+          <a href="#inicio">Inicio</a>
+          <a href="#modulos">Módulos</a>
+          <a href="#instalacion">Instalación</a>
+          <a href="#descargar">Descargar</a>
+        </div>
+        <div class="footer-link-group">
+          <h4>Recursos</h4>
+          <a href="https://github.com/Tranquilino1/SistemaClinicoAauca/releases/download/v1.0.0/Manual_Usuario_ClinicaAauca.pdf" target="_blank">Manual de Usuario</a>
+          <a href="https://github.com/Tranquilino1/SistemaClinicoAauca/releases" target="_blank">Releases GitHub</a>
+          <a href="https://github.com/Tranquilino1/SistemaClinicoAauca" target="_blank">Código Fuente</a>
+        </div>
+      </div>
+    </div>
+    
+    <div class="footer-bottom text-center">
+      <p>&copy; 2026 Clínica AAUCA. Todos los derechos reservados. Desarrollado bajo licenciamiento abierto.</p>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="app.js"></script>
+</body>
+</html>
