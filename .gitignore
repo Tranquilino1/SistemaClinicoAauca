@@ -48,3 +48,7 @@ Desktop.ini
 /node_modules/
 /dist_ready/
 /Nueva carpeta/
+
+# Instaladores compilados de Windows
+/ClinicaAauca_Setup.exe
+
