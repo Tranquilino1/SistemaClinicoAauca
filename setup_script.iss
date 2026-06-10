@@ -45,6 +45,8 @@ Source: "build-dist\lib\*"; DestDir: "{app}\lib"; Flags: ignoreversion recursesu
 Source: "build-dist\resources\*"; DestDir: "{app}\resources"; Flags: ignoreversion recursesubdirs createallsubdirs
 ; Base de datos para la primera ejecución
 Source: "build-dist\clinica_aauca.db"; DestDir: "{app}"; Flags: ignoreversion
+; JRE Privado para ejecución autónoma sin dependencias globales de Java
+Source: "C:\Java\jdk-17\*"; DestDir: "{app}\jre"; Flags: ignoreversion recursesubdirs createallsubdirs
 
 [Icons]
 Name: "{autoprograms}\{#MyAppName}"; Filename: "{app}\{#MyAppExeName}"

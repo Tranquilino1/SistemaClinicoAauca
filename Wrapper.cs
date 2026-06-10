@@ -48,14 +48,32 @@ namespace ClinicaAauca.App
             // Descomprimir el paquete en el directorio temporal
             ZipFile.ExtractToDirectory(zipPath, tempDir);
 
-            // Lanzar el script por lotes para iniciar el entorno JavaFX
-            string batPath = Path.Combine(tempDir, "Iniciar_Clinica.bat");
-            if (File.Exists(batPath))
+            // Obtener la ruta donde se ejecuta este Wrapper
+            string appDir = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+            string privateJava = Path.Combine(appDir, @"jre\bin\javaw.exe");
+
+            if (File.Exists(privateJava))
             {
-                ProcessStartInfo psi = new ProcessStartInfo(batPath);
+                // Si existe la JRE privada, ejecutar con ella de forma directa y silenciosa
+                ProcessStartInfo psi = new ProcessStartInfo();
+                psi.FileName = privateJava;
+                psi.Arguments = "-jar \"Clinica_AAUCA.jar\"";
                 psi.WorkingDirectory = tempDir;
-                psi.WindowStyle = ProcessWindowStyle.Hidden;
+                psi.CreateNoWindow = true;
+                psi.UseShellExecute = false;
                 Process.Start(psi);
+            }
+            else
+            {
+                // Si no existe, caer en el script por lotes por defecto (sistema)
+                string batPath = Path.Combine(tempDir, "Iniciar_Clinica.bat");
+                if (File.Exists(batPath))
+                {
+                    ProcessStartInfo psi = new ProcessStartInfo(batPath);
+                    psi.WorkingDirectory = tempDir;
+                    psi.WindowStyle = ProcessWindowStyle.Hidden;
+                    Process.Start(psi);
+                }
             }
         }
     }
