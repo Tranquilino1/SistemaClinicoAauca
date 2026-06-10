@@ -57,7 +57,7 @@ namespace ClinicaAauca.App
                 // Si existe la JRE privada, ejecutar con ella de forma directa y silenciosa
                 ProcessStartInfo psi = new ProcessStartInfo();
                 psi.FileName = privateJava;
-                psi.Arguments = "-jar \"Clinica_AAUCA.jar\"";
+                psi.Arguments = "-jar \"" + Path.Combine(tempDir, "Clinica_AAUCA.jar") + "\"";
                 psi.WorkingDirectory = tempDir;
                 psi.CreateNoWindow = true;
                 psi.UseShellExecute = false;
