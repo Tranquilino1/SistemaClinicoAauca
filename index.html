@@ -1,336 +1,219 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" class="scroll-smooth">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Sistema Clínico AAUCA | Plataforma Médica de Vanguardia</title>
-  
-  <!-- SEO Meta Tags -->
-  <meta name="description" content="Descargue el Sistema Clínico AAUCA. La plataforma médica más avanzada para optimizar triajes, consultas, recetas, farmacia y hospitalización con interfaz premium de alta tecnología.">
-  <meta name="keywords" content="Clínica AAUCA, Sistema Clínico, software médico, historias clínicas, triaje, gestión hospitalaria, farmacia médica">
-  
-  <!-- Google Fonts: Outfit (Titulares) e Inter (Lectura) -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
-  
-  <!-- Google Material Symbols (Iconos médicos y de descarga) -->
-  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet" />
-  
-  <!-- Estilos de la aplicación -->
-  <link rel="stylesheet" href="style.css">
-</head>
-<body class="dark-theme">
-  
-  <!-- Cabecera de Navegación -->
-  <header class="navbar glass-container">
-    <div class="nav-container">
-      <div class="nav-brand">
-        <span class="material-symbols-outlined brand-icon">clinical_notes</span>
-        <div class="brand-text">
-          <h2>Clínica <span class="brand-gradient">AAUCA</span></h2>
-          <span class="brand-sub">Sistema de Gestión</span>
-        </div>
-      </div>
-      
-      <nav class="nav-links">
-        <a href="#inicio" class="active">Inicio</a>
-        <a href="#modulos">Módulos</a>
-        <a href="#instalacion">Instalación</a>
-        <a href="#descargar">Descarga</a>
-      </nav>
-      
-      <div class="nav-actions">
-        <a href="ClinicaAauca_Setup.exe" class="btn btn-nav-cta ripple">
-          <span class="material-symbols-outlined">download</span>
-          <span>Instalar Setup</span>
-        </a>
-      </div>
-    </div>
-  </header>
-  
-  <!-- SECCIÓN HERO -->
-  <section id="inicio" class="hero-section">
-    <div class="hero-bg-glow"></div>
-    <div class="container hero-container">
-      <div class="hero-content">
-        <div class="hero-badge animate-pulse-border">
-          <span class="material-symbols-outlined badge-icon text-cyan">verified</span>
-          <span>Versión Oficial v1.0.0 Disponible</span>
-        </div>
-        
-        <h1 class="hero-title">La Revolución Tecnológica en <span class="text-gradient">Gestión Médica</span></h1>
-        <p class="hero-subtitle">Optimice historias clínicas, triajes, recetas y el control de inventarios farmacéuticos con una interfaz táctil ultra-rápida, segura y robusta diseñada para profesionales exigentes.</p>
-        
-        <div class="hero-actions">
-          <a href="ClinicaAauca_Setup.exe" class="btn btn-primary ripple" id="btn-hero-setup">
-            <span class="material-symbols-outlined">download</span>
-            <div class="btn-double-text">
-              <span class="btn-main-txt">Instalador Windows</span>
-              <span class="btn-sub-txt">Recomendado (.exe)</span>
-            </div>
-          </a>
-          
-          <a href="ClinicaAauca_Final.exe" class="btn btn-outline ripple" id="btn-hero-portable">
-            <span class="material-symbols-outlined">box</span>
-            <div class="btn-double-text">
-              <span class="btn-main-txt">Versión Portable</span>
-              <span class="btn-sub-txt">Sin instalación (.exe)</span>
-            </div>
-          </a>
-        </div>
-        
-        <div class="hero-stats">
-          <div class="stat-item">
-            <span class="stat-number" id="simulated-downloads">1,248</span>
-            <span class="stat-label">Descargas Hoy</span>
-          </div>
-          <div class="stat-divider"></div>
-          <div class="stat-item">
-            <span class="stat-number">99.9%</span>
-            <span class="stat-label">Disponibilidad</span>
-          </div>
-          <div class="stat-divider"></div>
-          <div class="stat-item">
-            <span class="stat-number">&lt; 150ms</span>
-            <span class="stat-label">Latencia de Carga</span>
-          </div>
-        </div>
-      </div>
-      
-      <!-- Mockup Interactivo de la GUI del Software -->
-      <div class="hero-mockup-wrapper">
-        <div class="mockup-frame glass-container">
-          <div class="mockup-header">
-            <div class="mockup-dots">
-              <span class="dot dot-red"></span>
-              <span class="dot dot-yellow"></span>
-              <span class="dot dot-green"></span>
-            </div>
-            <div class="mockup-address">
-              <span class="material-symbols-outlined icon-address">lock</span>
-              <span>clinica-aauca.app/escritorio</span>
-            </div>
-          </div>
-          
-          <div class="mockup-body">
-            <img src="dashboard_mockup.png" alt="Panel de Inicio - Sistema Clínico AAUCA" class="mockup-img">
-          </div>
-        </div>
-        <div class="mockup-glow"></div>
-      </div>
-    </div>
-  </section>
-  
-  <!-- SECCIÓN DE MÓDULOS (CARACTERÍSTICAS) -->
-  <section id="modulos" class="features-section">
-    <div class="container">
-      <div class="section-header text-center">
-        <span class="section-tag">Capacidades del Sistema</span>
-        <h2 class="section-title">Módulos Integrados del Software</h2>
-        <p class="section-subtitle">Diseñado con un enfoque departamental estricto para conectar la clínica de extremo a extremo.</p>
-      </div>
-      
-      <div class="features-grid">
-        <!-- Tarjeta 1: Triaje -->
-        <div class="feature-card glass-container ripple">
-          <div class="feature-icon bg-cyan-glow">
-            <span class="material-symbols-outlined text-cyan">emergency</span>
-          </div>
-          <h3>Triaje de Emergencias</h3>
-          <p>Clasificación rápida de pacientes en 5 escalas de prioridad médica (Manchester adaptada). Optimiza los tiempos de espera bajo situaciones críticas.</p>
-          <div class="feature-tag-list">
-            <span class="f-tag">Manchester</span>
-            <span class="f-tag">Signos Vitales</span>
-          </div>
-        </div>
-        
-        <!-- Tarjeta 2: Consulta Médica -->
-        <div class="feature-card glass-container ripple">
-          <div class="feature-icon bg-violet-glow">
-            <span class="material-symbols-outlined text-violet">stethoscope</span>
-          </div>
-          <h3>Consulta y Recetas</h3>
-          <p>Creación ágil de expedientes clínicos, evolución médica e impresión/firma de recetas médicas digitales integradas con la base de fármacos.</p>
-          <div class="feature-tag-list">
-            <span class="f-tag">CIE-10</span>
-            <span class="f-tag">Recetario PDF</span>
-          </div>
-        </div>
-        
-        <!-- Tarjeta 3: Hospitalización -->
-        <div class="feature-card glass-container ripple">
-          <div class="feature-icon bg-blue-glow">
-            <span class="material-symbols-outlined text-blue">bedroom_parent</span>
-          </div>
-          <h3>Hospitalización</h3>
-          <p>Mapeo gráfico interactivo de la ocupación de camas clínicas, asignaciones de enfermería, evolución interna e inventario de pabellón.</p>
-          <div class="feature-tag-list">
-            <span class="f-tag">Camas Clínicas</span>
-            <span class="f-tag">Altas Médicas</span>
-          </div>
-        </div>
-        
-        <!-- Tarjeta 4: Farmacia -->
-        <div class="feature-card glass-container ripple">
-          <div class="feature-icon bg-green-glow">
-            <span class="material-symbols-outlined text-green">vaccines</span>
-          </div>
-          <h3>Farmacia & Inventario</h3>
-          <p>Control estricto de medicamentos con alertas automáticas de desabastecimiento, lotes próximos a vencer y control de dispensas por receta.</p>
-          <div class="feature-tag-list">
-            <span class="f-tag">Alertas Stock</span>
-            <span class="f-tag">Lotes / Vencimiento</span>
-          </div>
-        </div>
-        
-        <!-- Tarjeta 5: Seguridad y Roles -->
-        <div class="feature-card glass-container ripple">
-          <div class="feature-icon bg-yellow-glow">
-            <span class="material-symbols-outlined text-yellow">admin_panel_settings</span>
-          </div>
-          <h3>Seguridad de Datos</h3>
-          <p>Restricciones de privilegios según rol (Médicos, Enfermeros, Farmacéuticos, Administradores). Auditoría y encriptación de datos de pacientes.</p>
-          <div class="feature-tag-list">
-            <span class="f-tag">Autenticación</span>
-            <span class="f-tag">Logs Auditoría</span>
-          </div>
-        </div>
-        
-        <!-- Tarjeta 6: Ligero & Portable -->
-        <div class="feature-card glass-container ripple">
-          <div class="feature-icon bg-red-glow">
-            <span class="material-symbols-outlined text-red">bolt</span>
-          </div>
-          <h3>Alto Rendimiento</h3>
-          <p>Desarrollado en arquitectura nativa para Windows, consumiendo menos de 60 MB de memoria RAM con bases de datos encriptadas ultraligeras.</p>
-          <div class="feature-tag-list">
-            <span class="f-tag">Windows Nativo</span>
-            <span class="f-tag">SQLite Encriptado</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-  
-  <!-- SECCIÓN DE INSTALACIÓN -->
-  <section id="instalacion" class="installation-section">
-    <div class="container">
-      <div class="section-header text-center">
-        <span class="section-tag">Guía de Inicio</span>
-        <h2 class="section-title">Instalación en 3 Simples Pasos</h2>
-        <p class="section-subtitle">Tenga el sistema clínico operativo en sus estaciones de trabajo de Windows en menos de 2 minutos.</p>
-      </div>
-      
-      <div class="timeline-wrapper">
-        <div class="timeline-progress">
-          <div class="timeline-progress-fill" id="timeline-progress-fill"></div>
-        </div>
-        
-        <div class="timeline-nodes">
-          <!-- Paso 1 -->
-          <div class="timeline-node active" id="node-step-1">
-            <div class="node-marker">1</div>
-            <div class="node-content glass-container">
-              <span class="material-symbols-outlined node-icon text-cyan">download</span>
-              <h4>Descarga Segura</h4>
-              <p>Haga clic en el botón de descarga del instalador <strong>Setup</strong>. El ejecutable se descargará directamente desde nuestros repositorios encriptados en GitHub.</p>
-            </div>
-          </div>
-          
-          <!-- Paso 2 -->
-          <div class="timeline-node" id="node-step-2">
-            <div class="node-marker">2</div>
-            <div class="node-content glass-container">
-              <span class="material-symbols-outlined node-icon text-violet">double_arrow</span>
-              <h4>Asistente de Windows</h4>
-              <p>Abra el instalador <code>ClinicaAauca_Setup.exe</code>. Al ser una aplicación nueva, si Windows SmartScreen muestra un aviso, haga clic en <em>"Más información"</em> y luego en <em>"Ejecutar de todas formas"</em>.</p>
-            </div>
-          </div>
-          
-          <!-- Paso 3 -->
-          <div class="timeline-node" id="node-step-3">
-            <div class="node-marker">3</div>
-            <div class="node-content glass-container">
-              <span class="material-symbols-outlined node-icon text-green">clinical_notes</span>
-              <h4>Configuración Inicial</h4>
-              <p>El sistema se iniciará de forma automática. Complete los datos básicos de su clínica y cree la cuenta del Administrador Principal para comenzar a operar inmediatamente.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-  
-  <!-- SECCIÓN DE DESCARGA FINAL -->
-  <section id="descargar" class="download-section">
-    <div class="download-bg-glow"></div>
-    <div class="container text-center">
-      <div class="download-box glass-container animate-pulse-border">
-        <span class="material-symbols-outlined download-box-icon text-gradient">cloud_download</span>
-        <h2>¿Listo para digitalizar su clínica?</h2>
-        <p>Descargue ahora el Sistema Clínico AAUCA de forma totalmente gratuita y revolucione la gestión médica de su institución.</p>
-        
-        <div class="download-buttons-group">
-          <a href="ClinicaAauca_Setup.exe" class="btn btn-primary ripple">
-            <span class="material-symbols-outlined">download</span>
-            <div class="btn-double-text text-left">
-              <span class="btn-main-txt">Instalador Completo</span>
-              <span class="btn-sub-txt">Setup.exe | 42 MB</span>
-            </div>
-          </a>
-          
-          <a href="ClinicaAauca_Final.exe" class="btn btn-outline ripple">
-            <span class="material-symbols-outlined">box</span>
-            <div class="btn-double-text text-left">
-              <span class="btn-main-txt">Versión Portable</span>
-              <span class="btn-sub-txt">Portable.exe | 38 MB</span>
-            </div>
-          </a>
-        </div>
-        
-        <div class="manual-download-banner">
-          <span class="material-symbols-outlined text-cyan">description</span>
-          <span>¿Tiene dudas sobre el uso del software? Consulte el <a href="manual.html" class="manual-link">Manual de Usuario Oficial (Visor Interactivo)</a></span>
-        </div>
-      </div>
-    </div>
-  </section>
-  
-  <!-- FOOTER -->
-  <footer class="footer">
-    <div class="container footer-container">
-      <div class="footer-left">
-        <div class="nav-brand">
-          <span class="material-symbols-outlined brand-icon text-cyan">clinical_notes</span>
-          <h2>Clínica <span class="brand-gradient">AAUCA</span></h2>
-        </div>
-        <p class="footer-desc">Solución de software médico de alta fidelidad, ligero, rápido y seguro. Comprometidos con el desarrollo libre y la excelencia operativa clínica.</p>
-      </div>
-      
-      <div class="footer-links-grid">
-        <div class="footer-link-group">
-          <h4>Navegación</h4>
-          <a href="#inicio">Inicio</a>
-          <a href="#modulos">Módulos</a>
-          <a href="#instalacion">Instalación</a>
-          <a href="#descargar">Descargar</a>
-        </div>
-        <div class="footer-link-group">
-          <h4>Recursos</h4>
-          <a href="manual.html">Manual de Usuario</a>
-          <a href="https://github.com/Tranquilino1/SistemaClinicoAauca/releases" target="_blank">Releases GitHub</a>
-          <a href="https://github.com/Tranquilino1/SistemaClinicoAauca" target="_blank">Código Fuente</a>
-        </div>
-      </div>
-    </div>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SISTEMA CLÍNICO AAUCA — Gestión Médica Universitaria</title>
     
-    <div class="footer-bottom text-center">
-      <p>&copy; 2026 Clínica AAUCA. Todos los derechos reservados. Desarrollado bajo licenciamiento abierto.</p>
-    </div>
-  </footer>
+    <!-- Meta SEO -->
+    <meta name="description" content="Sistema Integral de Gestión Clínica para la Universidad Afro-Americana de África Central (AAUCA). Control de triaje, expedientes médicos e inventario farmacéutico.">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@200;400;700;800&display=swap" rel="stylesheet">
+    
+    <!-- GSAP Animations -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        aauca: {
+                            blue: '#003366',
+                            gold: '#FFD700',
+                            dark: '#0A0F1D',
+                            lightBlue: '#1E3E62',
+                            glass: 'rgba(255, 255, 255, 0.03)'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
 
-  <!-- Scripts -->
-  <script src="app.js"></script>
+    <style>
+        body { background-color: #0A0F1D; color: white; }
+        .glass { background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.08); }
+        .blue-glow { box-shadow: 0 0 50px -12px rgba(0, 51, 102, 0.6); }
+        .text-gradient { background: linear-gradient(to right, #ffffff, #FFD700, #3B82F6); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .bg-grid { background-image: radial-gradient(circle at 2px 2px, rgba(30, 62, 98, 0.15) 1px, transparent 0); background-size: 40px 40px; }
+        @keyframes float { 0%, 100% { transform: translateY(0px); } 50% { transform: translateY(-15px); } }
+        .floating { animation: float 5s ease-in-out infinite; }
+    </style>
+</head>
+<body class="bg-grid overflow-x-hidden">
+
+    <!-- NAVBAR -->
+    <nav class="fixed top-0 w-full z-50 py-6 transition-all duration-300" id="navbar">
+        <div class="max-w-7xl mx-auto px-6 flex justify-between items-center">
+            <div class="flex items-center gap-3">
+                <div class="w-10 h-10 bg-aauca-blue rounded-xl flex items-center justify-center blue-glow border border-aauca-gold/20">
+                    <i data-lucide="activity" class="text-aauca-gold"></i>
+                </div>
+                <span class="text-2xl font-extrabold tracking-tighter uppercase">CLÍNICA <span class="text-aauca-gold">AAUCA</span></span>
+            </div>
+            <div class="hidden md:flex items-center gap-8 text-sm font-bold uppercase tracking-widest text-gray-400">
+                <a href="#features" class="hover:text-aauca-gold transition">Características</a>
+                <a href="#tech" class="hover:text-aauca-gold transition">Seguridad</a>
+                <a href="ClinicaAauca_Setup.exe" class="bg-aauca-blue text-white border border-aauca-gold/30 px-6 py-2.5 rounded-xl font-black hover:bg-aauca-lightBlue hover:border-aauca-gold transition">DESCARGAR INSTALADOR</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HERO -->
+    <section class="relative min-h-screen flex items-center justify-center pt-20 px-6">
+        <div class="absolute inset-0 z-0 overflow-hidden">
+            <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-aauca-blue/20 rounded-full blur-[120px]"></div>
+            <div class="absolute bottom-1/4 right-1/4 w-96 h-96 bg-aauca-gold/10 rounded-full blur-[120px]"></div>
+        </div>
+
+        <div class="relative z-10 max-w-5xl mx-auto text-center">
+            <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full glass text-aauca-gold text-xs font-black tracking-widest mb-8 uppercase" id="hero-badge">
+                <i data-lucide="shield-check" class="w-4 h-4"></i> Versión 1.0 Estable
+            </div>
+            
+            <h1 class="text-6xl md:text-8xl font-black tracking-tighter mb-8 leading-[0.9] uppercase italic" id="hero-title">
+                Salud & <br />
+                <span class="text-gradient">Tecnología</span>
+            </h1>
+            
+            <p class="text-xl md:text-2xl text-gray-400 max-w-3xl mx-auto mb-12 font-medium leading-relaxed" id="hero-desc">
+                Gestión médica profesional y registro de triaje estructurado en tiempo real. <br class="hidden md:block" />
+                Desarrollado para el campus de la Universidad Afro-Americana de África Central.
+            </p>
+
+            <div class="flex flex-col md:flex-row items-center justify-center gap-8 mb-20" id="hero-actions">
+                <a href="ClinicaAauca_Setup.exe" class="group bg-aauca-blue text-white border border-aauca-gold/40 px-12 py-6 rounded-2xl font-black text-2xl flex items-center gap-4 transition-all hover:scale-105 blue-glow active:scale-95">
+                    <i data-lucide="download" class="w-8 h-8 text-aauca-gold"></i> DESCARGAR SETUP EXE
+                </a>
+                
+                <div class="flex flex-col sm:flex-row items-center gap-6 p-6 glass rounded-[2.5rem]">
+                    <div class="bg-white p-3 rounded-2xl shadow-2xl overflow-hidden floating" id="logo-container">
+                        <img src="app_icon.png" alt="Logo Clínica AAUCA" class="w-24 h-24 object-contain" />
+                    </div>
+                    <div class="text-center sm:text-left">
+                        <p class="text-xs font-black text-aauca-gold uppercase tracking-[0.2em] mb-2">Instalación Local</p>
+                        <p class="text-2xl font-black leading-tight uppercase italic">Despliegue <br/><span class="text-blue-400">Silencioso</span></p>
+                        <p class="text-gray-500 text-xs mt-2 max-w-[180px]">Asistente de Inno Setup optimizado con licencia EULA.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FEATURES -->
+    <section id="features" class="py-32 px-6 glass border-y border-white/5">
+        <div class="max-w-7xl mx-auto">
+            <h2 class="text-center text-4xl md:text-5xl font-black tracking-tight mb-20 uppercase italic">
+                Módulos del <span class="text-aauca-gold">Sistema</span>
+            </h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Card 1 -->
+                <div class="p-8 rounded-3xl glass hover:border-aauca-gold/30 transition duration-300">
+                    <div class="w-12 h-12 bg-aauca-blue/40 rounded-xl flex items-center justify-center mb-6">
+                        <i data-lucide="users" class="text-aauca-gold w-6 h-6"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4 uppercase">Control de Pacientes</h3>
+                    <p class="text-gray-400">Gestión de estudiantes, docentes y particulares con tarjetas de acceso interactivo e historial completo.</p>
+                </div>
+                <!-- Card 2 -->
+                <div class="p-8 rounded-3xl glass hover:border-aauca-gold/30 transition duration-300">
+                    <div class="w-12 h-12 bg-aauca-blue/40 rounded-xl flex items-center justify-center mb-6">
+                        <i data-lucide="heart" class="text-aauca-gold w-6 h-6"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4 uppercase">Triaje en Dos Columnas</h3>
+                    <p class="text-gray-400">Captura de signos vitales (peso, talla, temperatura, frecuencia cardíaca/respiratoria y presión arterial) en un flujo clínico profesional.</p>
+                </div>
+                <!-- Card 3 -->
+                <div class="p-8 rounded-3xl glass hover:border-aauca-gold/30 transition duration-300">
+                    <div class="w-12 h-12 bg-aauca-blue/40 rounded-xl flex items-center justify-center mb-6">
+                        <i data-lucide="pill" class="text-aauca-gold w-6 h-6"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4 uppercase">Inventario Farmacéutico</h3>
+                    <p class="text-gray-400">Control de stock de medicamentos y tratamientos antipalúdicos específicos con actualizaciones automáticas.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TECH GRID -->
+    <section id="tech" class="py-32 px-6">
+        <div class="max-w-7xl mx-auto">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+                <div class="md:col-span-2 p-12 rounded-[2.5rem] glass flex flex-col justify-end min-h-[450px] relative overflow-hidden group">
+                    <div class="absolute top-0 right-0 p-12 text-aauca-blue/15 scale-[4] group-hover:scale-[5] transition-transform duration-700">
+                        <i data-lucide="database" class="w-32 h-32"></i>
+                    </div>
+                    <i data-lucide="database" class="text-aauca-gold mb-8 w-16 h-16"></i>
+                    <h3 class="text-5xl font-black mb-4 uppercase italic leading-none">SQLite WAL</h3>
+                    <p class="text-gray-400 text-lg max-w-md">Persistencia de datos ultrasegura a través de transacciones rápidas mediante Write-Ahead Logging local.</p>
+                </div>
+                
+                <div class="p-10 rounded-[2.5rem] glass flex flex-col justify-end group">
+                    <i data-lucide="key-round" class="text-blue-400 mb-6 w-12 h-12 group-hover:scale-110 transition-transform"></i>
+                    <h3 class="text-2xl font-black mb-2 uppercase">BCrypt Cifrado</h3>
+                    <p class="text-gray-500 text-sm">Control estricto de accesos y cifrado de contraseñas de médicos, enfermeros y administradores.</p>
+                </div>
+                
+                <div class="p-10 rounded-[2.5rem] glass flex flex-col justify-end group">
+                    <i data-lucide="file-text" class="text-aauca-gold mb-6 w-12 h-12 group-hover:scale-110 transition-transform"></i>
+                    <h3 class="text-2xl font-black mb-2 uppercase">Acuerdo EULA</h3>
+                    <p class="text-gray-500 text-sm">Instalador estructurado con licencia legal de usuario final para resguardar la confidencialidad médica.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="py-20 border-t border-white/5 text-center bg-black/40">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="flex items-center justify-center gap-3 mb-8">
+                <i data-lucide="activity" class="text-aauca-gold w-8 h-8"></i>
+                <span class="text-2xl font-black tracking-tighter uppercase">Clínica AAUCA</span>
+            </div>
+            <p class="text-gray-500 max-w-md mx-auto mb-10 font-medium italic">
+                "Garantizando la gestión eficiente de salud e historias clínicas universitarias."
+            </p>
+            <div class="w-full h-px bg-white/5 mb-10"></div>
+            <p class="text-[10px] text-gray-700 uppercase tracking-[0.5em] font-black">
+                © 2026 AAUCA · Facultad de Ingenierías · Ciudad de la Paz
+            </p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+        // Inicializar Iconos
+        lucide.createIcons();
+
+        // Navbar Scroll Effect
+        window.addEventListener('scroll', () => {
+            const nav = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                nav.classList.add('bg-black/90', 'backdrop-blur-xl', 'border-b', 'border-white/5', 'py-4');
+                nav.classList.remove('py-6');
+            } else {
+                nav.classList.remove('bg-black/90', 'backdrop-blur-xl', 'border-b', 'border-white/5', 'py-4');
+                nav.classList.add('py-6');
+            }
+        });
+
+        // Animations with GSAP
+        gsap.from("#hero-badge", { opacity: 0, y: 20, duration: 1, ease: "power4.out" });
+        gsap.from("#hero-title", { opacity: 0, y: 40, duration: 1.2, delay: 0.2, ease: "power4.out" });
+        gsap.from("#hero-desc", { opacity: 0, y: 30, duration: 1, delay: 0.5, ease: "power4.out" });
+        gsap.from("#hero-actions", { opacity: 0, scale: 0.9, duration: 1, delay: 0.8, ease: "back.out(1.7)" });
+    </script>
 </body>
 </html>
