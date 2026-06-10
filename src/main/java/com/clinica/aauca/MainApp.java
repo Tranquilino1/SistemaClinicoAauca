@@ -33,7 +33,7 @@ public class MainApp extends Application {
             // Configuración de la ventana principal
             stage.setTitle("Clínica Aauca - Gestión Profesional");
             try {
-                stage.getIcons().add(new Image(MainApp.class.getResourceAsStream("/com/clinica/aauca/images/aauca_logo.png")));
+                stage.getIcons().add(new Image(MainApp.class.getResourceAsStream("/com/clinica/aauca/images/logo.png")));
             } catch (Exception iconEx) {
                 System.err.println("Advertencia al cargar icono de la app: " + iconEx.getMessage());
             }

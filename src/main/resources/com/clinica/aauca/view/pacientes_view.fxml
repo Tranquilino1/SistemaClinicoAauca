@@ -13,6 +13,7 @@
         </HBox>
     </top>
     
+    
     <center>
         <ScrollPane fitToWidth="true" style="-fx-background-color: transparent; -fx-background: transparent; -fx-border-color: transparent;">
             <FlowPane fx:id="containerPacientes" hgap="25" vgap="25" style="-fx-padding: 15;">

@@ -11,9 +11,12 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
+import javafx.scene.layout.HBox;
 import javafx.scene.paint.Color;
 import java.util.List;
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView;
+import javafx.scene.control.ScrollPane;
+import javafx.geometry.Pos;
 
 public class PacientesController {
     @FXML private FlowPane containerPacientes;
@@ -21,7 +24,6 @@ public class PacientesController {
     @FXML private Label lblPagina;
     @FXML private Button btnAnterior;
     @FXML private Button btnSiguiente;
-
     @FXML private Button btnNuevoPaciente;
 
     private PacienteDAO dao = new PacienteDAOImpl();
@@ -39,7 +41,6 @@ public class PacientesController {
     }
 
     private void verificarPermisos() {
-        // Obtenemos el usuario de la sesión a través del DashboardController (Singleton)
         if (DashboardController.getInstancia() != null) {
             com.clinica.aauca.model.User user = DashboardController.getInstancia().getCurrentUser();
             if (user != null && "Médico".equals(user.getRole())) {
@@ -83,7 +84,7 @@ public class PacientesController {
 
     private VBox crearTarjetaPaciente(Paciente p) {
         VBox card = new VBox(10);
-        card.getStyleClass().add("modulo-card"); // Reutilizar estilo de tarjeta
+        card.getStyleClass().add("modulo-card");
         card.setPrefSize(220, 240);
         card.setAlignment(javafx.geometry.Pos.CENTER);
         card.setStyle("-fx-background-color: white; -fx-background-radius: 15; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.1), 10, 0, 0, 5);");
@@ -109,11 +110,9 @@ public class PacientesController {
 
         card.getChildren().addAll(icon, lblNombre, lblId, lblStatus, lblNac);
         
-        // Efecto hover
-        card.setOnMouseEntered(e -> card.setStyle("-fx-background-color: #F0F4F8; -fx-background-radius: 15; -fx-scale-x: 1.02; -fx-scale-y: 1.02; -fx-transition: 0.3s;"));
+        card.setOnMouseEntered(e -> card.setStyle("-fx-background-color: #F0F4F8; -fx-background-radius: 15; -fx-scale-x: 1.02; -fx-scale-y: 1.02;"));
         card.setOnMouseExited(e -> card.setStyle("-fx-background-color: white; -fx-background-radius: 15; -fx-scale-x: 1.0; -fx-scale-y: 1.0;"));
 
-        // Acción al hacer clic: Ver detalle y actividad
         card.setOnMouseClicked(e -> mostrarActividadPaciente(p));
 
         return card;
@@ -163,94 +162,141 @@ public class PacientesController {
 
     @FXML
     private void crearPaciente() {
-        Dialog<javafx.util.Pair<Paciente, com.clinica.aauca.model.SignosVitales>> dialog = new Dialog<>();
-        dialog.setTitle("Nuevo Paciente y Triaje");
-        dialog.setHeaderText("Registro de Paciente y Signos Vitales (Enfermería)");
+        try {
+            javafx.fxml.FXMLLoader loader = new javafx.fxml.FXMLLoader(getClass().getResource("/com/clinica/aauca/view/nuevo_paciente_dialog.fxml"));
+            javafx.scene.Parent root = loader.load();
+            NuevoPacienteDialogController dialogController = loader.getController();
 
-        ButtonType btnGuardar = new ButtonType("Guardar Todo", ButtonBar.ButtonData.OK_DONE);
-        dialog.getDialogPane().getButtonTypes().addAll(btnGuardar, ButtonType.CANCEL);
-
-        GridPane grid = new GridPane();
-        grid.setHgap(15); grid.setVgap(10);
-        grid.setPadding(new javafx.geometry.Insets(20, 20, 10, 10));
-
-        // Campos del Paciente
-        TextField txtNombre = new TextField(); txtNombre.setPromptText("Nombres");
-        TextField txtApellidos = new TextField(); txtApellidos.setPromptText("Apellidos");
-        ComboBox<String> comboTipo = new ComboBox<>(FXCollections.observableArrayList("Estudiante", "Docente", "Administrativo", "Particular"));
-        comboTipo.setPromptText("Seleccione Tipo");
-        ComboBox<String> comboSexo = new ComboBox<>(FXCollections.observableArrayList("Masculino", "Femenino", "Otro"));
-        TextField txtFechaNac = new TextField(); txtFechaNac.setPromptText("YYYY-MM-DD");
-        TextField txtDireccion = new TextField(); txtDireccion.setPromptText("Residencia");
-        TextField txtTelefono = new TextField(); txtTelefono.setPromptText("Número de Teléfono");
-        TextField txtNacionalidad = new TextField(); txtNacionalidad.setPromptText("Nacionalidad");
-
-        // Campos de Signos Vitales
-        TextField txtPeso = new TextField(); txtPeso.setPromptText("kg");
-        TextField txtTemp = new TextField(); txtTemp.setPromptText("°C");
-        TextField txtPulso = new TextField(); txtPulso.setPromptText("bpm");
-        TextField txtResp = new TextField(); txtResp.setPromptText("rpm");
-        TextField txtPresion = new TextField(); txtPresion.setPromptText("120/80");
-        TextField txtTalla = new TextField(); txtTalla.setPromptText("cm");
-
-        int row = 0;
-        grid.add(new Label("DATOS DEL PACIENTE"), 0, row++, 2, 1);
-        grid.add(new Label("Nombres:"), 0, row); grid.add(txtNombre, 1, row++);
-        grid.add(new Label("Apellidos:"), 0, row); grid.add(txtApellidos, 1, row++);
-        grid.add(new Label("Tipo:"), 0, row); grid.add(comboTipo, 1, row++);
-        grid.add(new Label("Sexo:"), 0, row); grid.add(comboSexo, 1, row++);
-        grid.add(new Label("F. Nacimiento:"), 0, row); grid.add(txtFechaNac, 1, row++);
-        grid.add(new Label("Dirección:"), 0, row); grid.add(txtDireccion, 1, row++);
-        grid.add(new Label("Teléfono:"), 0, row); grid.add(txtTelefono, 1, row++);
-        grid.add(new Label("Nacionalidad:"), 0, row); grid.add(txtNacionalidad, 1, row++);
-
-        grid.add(new Separator(), 0, row++, 2, 1);
-        grid.add(new Label("SIGNOS VITALES"), 0, row++, 2, 1);
-        grid.add(new Label("Peso:"), 0, row); grid.add(txtPeso, 1, row++);
-        grid.add(new Label("Temperatura:"), 0, row); grid.add(txtTemp, 1, row++);
-        grid.add(new Label("Frec. Cardíaca:"), 0, row); grid.add(txtPulso, 1, row++);
-        grid.add(new Label("Frec. Respiratoria:"), 0, row); grid.add(txtResp, 1, row++);
-        grid.add(new Label("Presión Arterial:"), 0, row); grid.add(txtPresion, 1, row++);
-        grid.add(new Label("Talla:"), 0, row); grid.add(txtTalla, 1, row++);
-
-        dialog.getDialogPane().setContent(grid);
-
-        dialog.setResultConverter(dialogButton -> {
-            if (dialogButton == btnGuardar) {
-                if (txtNombre.getText().isEmpty() || txtApellidos.getText().isEmpty()) return null;
-                String nombreCompleto = txtNombre.getText().trim() + " " + txtApellidos.getText().trim();
-                boolean esEst = "Estudiante".equals(comboTipo.getValue());
-                Paciente p = new Paciente(0, nombreCompleto, comboTipo.getValue(), esEst, txtFechaNac.getText(), comboSexo.getValue(), txtDireccion.getText(), txtTelefono.getText(), txtNacionalidad.getText());
-                com.clinica.aauca.model.SignosVitales sv = new com.clinica.aauca.model.SignosVitales(0, 0, java.time.LocalDate.now().toString(), txtPeso.getText(), txtTemp.getText(), txtPulso.getText(), txtResp.getText(), txtPresion.getText(), txtTalla.getText());
-                return new javafx.util.Pair<>(p, sv);
-            }
-            return null;
-        });
-
-        java.util.Optional<javafx.util.Pair<Paciente, com.clinica.aauca.model.SignosVitales>> resultado = dialog.showAndWait();
-        resultado.ifPresent(pair -> {
-            try {
-                dao.crearPaciente(pair.getKey());
-                // Obtener el ID generado (esto es una limitación del DAO actual, deberíamos devolver el ID)
-                // Pero por ahora, buscaremos el último paciente con ese nombre
-                int nuevoId = 0;
-                List<Paciente> busqueda = dao.buscarPacientePorNombre(pair.getKey().getNombreCompleto(), 0, 1);
-                if (!busqueda.isEmpty()) nuevoId = busqueda.get(0).getId();
-                
-                if (nuevoId > 0) {
-                    pair.getValue().setPacienteId(nuevoId);
-                    svDao.registrarSignos(pair.getValue());
+            Dialog<javafx.util.Pair<Paciente, com.clinica.aauca.model.SignosVitales>> dialog = new Dialog<>();
+            dialog.setTitle("Nuevo Paciente y Triaje");
+            dialog.setHeaderText(null);
+            
+            ButtonType btnGuardar = new ButtonType("Guardar Todo", ButtonBar.ButtonData.OK_DONE);
+            dialog.getDialogPane().getButtonTypes().addAll(btnGuardar, ButtonType.CANCEL);
+            dialog.getDialogPane().setContent(root);
+            
+            dialog.setResultConverter(dialogButton -> {
+                if (dialogButton == btnGuardar) {
+                    if (!dialogController.isInputValid()) {
+                        mostrarAlertaError("Los campos Nombres y Apellidos son obligatorios.");
+                        return null;
+                    }
+                    return dialogController.getResultData();
                 }
+                return null;
+            });
 
-                Alert alerta = new Alert(Alert.AlertType.INFORMATION);
-                alerta.setTitle("Éxito");
-                alerta.setHeaderText("Paciente y Signos Registrados");
-                alerta.setContentText("El paciente ha sido guardado y sus signos vitales registrados.");
-                alerta.showAndWait();
-                cargarPagina();
-            } catch (Exception e) {
-                e.printStackTrace();
+            // Intercept close request (e.g. from the 'X' button)
+            dialog.getDialogPane().getScene().getWindow().setOnCloseRequest(event -> {
+                if (dialogController.hasChanges()) {
+                    Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+                    alert.setTitle("Cambios no guardados");
+                    alert.setHeaderText("Tiene cambios sin guardar en el formulario.");
+                    alert.setContentText("¿Desea guardarlos antes de salir?");
+                    
+                    ButtonType btnSi = new ButtonType("Guardar");
+                    ButtonType btnNo = new ButtonType("Descartar");
+                    ButtonType btnCancel = new ButtonType("Cancelar", ButtonBar.ButtonData.CANCEL_CLOSE);
+                    alert.getButtonTypes().setAll(btnSi, btnNo, btnCancel);
+                    
+                    java.util.Optional<ButtonType> opt = alert.showAndWait();
+                    if (opt.isPresent()) {
+                        if (opt.get() == btnSi) {
+                            if (dialogController.isInputValid()) {
+                                Button okButton = (Button) dialog.getDialogPane().lookupButton(btnGuardar);
+                                if (okButton != null) {
+                                    okButton.fire();
+                                }
+                            } else {
+                                mostrarAlertaError("Los campos Nombres y Apellidos son obligatorios.");
+                                event.consume();
+                            }
+                        } else if (opt.get() == btnNo) {
+                            dialog.close();
+                        } else {
+                            event.consume(); // keep dialog open
+                        }
+                    } else {
+                        event.consume(); // keep dialog open
+                    }
+                }
+            });
+            
+            // Intercept Cancel button click
+            Button cancelButton = (Button) dialog.getDialogPane().lookupButton(ButtonType.CANCEL);
+            if (cancelButton != null) {
+                cancelButton.addEventFilter(javafx.event.ActionEvent.ACTION, event -> {
+                    if (dialogController.hasChanges()) {
+                        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+                        alert.setTitle("Cambios no guardados");
+                        alert.setHeaderText("Tiene cambios sin guardar en el formulario.");
+                        alert.setContentText("¿Desea guardarlos antes de salir?");
+                        
+                        ButtonType btnSi = new ButtonType("Guardar");
+                        ButtonType btnNo = new ButtonType("Descartar");
+                        ButtonType btnCancel = new ButtonType("Cancelar", ButtonBar.ButtonData.CANCEL_CLOSE);
+                        alert.getButtonTypes().setAll(btnSi, btnNo, btnCancel);
+                        
+                        java.util.Optional<ButtonType> opt = alert.showAndWait();
+                        if (opt.isPresent()) {
+                            if (opt.get() == btnSi) {
+                                if (dialogController.isInputValid()) {
+                                    Button okButton = (Button) dialog.getDialogPane().lookupButton(btnGuardar);
+                                    if (okButton != null) {
+                                        okButton.fire();
+                                    }
+                                    event.consume();
+                                } else {
+                                    mostrarAlertaError("Los campos Nombres y Apellidos son obligatorios.");
+                                    event.consume();
+                                }
+                            } else if (opt.get() == btnNo) {
+                                // Let the cancel action proceed (closes dialog)
+                            } else {
+                                event.consume(); // Keep dialog open
+                            }
+                        } else {
+                            event.consume(); // Keep dialog open
+                        }
+                    }
+                });
             }
-        });
+
+            java.util.Optional<javafx.util.Pair<Paciente, com.clinica.aauca.model.SignosVitales>> resultado = dialog.showAndWait();
+            resultado.ifPresent(pair -> {
+                try {
+                    dao.crearPaciente(pair.getKey());
+                    int nuevoId = 0;
+                    List<Paciente> busqueda = dao.buscarPacientePorNombre(pair.getKey().getNombreCompleto(), 0, 1);
+                    if (!busqueda.isEmpty()) nuevoId = busqueda.get(0).getId();
+                    
+                    if (nuevoId > 0) {
+                        pair.getValue().setPacienteId(nuevoId);
+                        svDao.registrarSignos(pair.getValue());
+                    }
+
+                    Alert alerta = new Alert(Alert.AlertType.INFORMATION);
+                    alerta.setTitle("Éxito");
+                    alerta.setHeaderText("Paciente y Signos Registrados");
+                    alerta.setContentText("El paciente ha sido guardado y sus signos vitales registrados.");
+                    alerta.showAndWait();
+                    cargarPagina();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                    mostrarAlertaError("Error al guardar: " + e.getMessage());
+                }
+            });
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            mostrarAlertaError("Error al cargar el diálogo: " + ex.getMessage());
+        }
+    }
+
+    private void mostrarAlertaError(String mensaje) {
+        Alert alerta = new Alert(Alert.AlertType.ERROR);
+        alerta.setTitle("Error");
+        alerta.setHeaderText(null);
+        alerta.setContentText(mensaje);
+        alerta.showAndWait();
     }
 }

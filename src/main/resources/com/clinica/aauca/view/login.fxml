@@ -18,12 +18,14 @@
         <VBox alignment="CENTER" maxWidth="380.0" spacing="25.0" styleClass="login-container">
             
             <!-- Logo e Información del Sistema -->
-            <VBox alignment="CENTER" spacing="10.0">
-                <ImageView fx:id="imgLogo" fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
-                    <image>
-                        <Image url="@../images/aauca_logo.png" />
-                    </image>
-                </ImageView>
+            <VBox alignment="CENTER" spacing="15.0">
+                <StackPane prefHeight="120.0" prefWidth="120.0" maxWidth="-Infinity" maxHeight="-Infinity" styleClass="login-logo-container">
+                    <ImageView fx:id="imgLogo" fitHeight="80.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true">
+                        <image>
+                            <Image url="@../images/logo.png" />
+                        </image>
+                    </ImageView>
+                </StackPane>
                 <Label styleClass="label-title" text="CLÍNICA AAUCA" />
                 <Label styleClass="label-subtitle" text="Sistema de Gestión Médica Profesional" />
             </VBox>

@@ -19,7 +19,7 @@
             <!-- Logo AAUCA -->
             <ImageView fx:id="logoView" fitWidth="80" fitHeight="80" preserveRatio="true">
                 <image>
-                    <Image url="@../images/aauca_logo.png" />
+                    <Image url="@../images/logo.png" />
                 </image>
             </ImageView>
             <Label text="CLÍNICA AAUCA" styleClass="sidebar-title" />

@@ -22,43 +22,76 @@
 
 /* Background gradient for Login screen */
 .login-bg {
-    -fx-background-color: linear-gradient(to bottom right, #001122, #002244, #003366);
+    -fx-background-color: linear-gradient(to bottom right, #0B192C, #1E3E62, #000000);
 }
 
-/* Contenedor Principal Login - Unified to completely blend with background */
+/* Contenedor Principal Login - Seamless style blending with background */
 .login-container {
     -fx-background-color: transparent;
     -fx-padding: 40px;
 }
 
+/* Container for the logo to frame it beautifully with padding and border */
+.login-logo-container {
+    -fx-background-color: #FFFFFF;
+    -fx-padding: 15px;
+    -fx-background-radius: 60px;
+    -fx-border-radius: 60px;
+    -fx-border-color: rgba(255, 255, 255, 0.2);
+    -fx-border-width: 4px;
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.25), 15, 0, 0, 6);
+}
+
 /* Styling elements inside login screen for a premium seamless look */
 .login-bg .label-title {
     -fx-text-fill: #FFFFFF !important;
+    -fx-font-size: 26px;
+    -fx-font-weight: bold;
+    -fx-letter-spacing: 1.5px;
 }
 
 .login-bg .label-subtitle {
-    -fx-text-fill: #A0B0C0 !important;
+    -fx-text-fill: #94A3B8 !important;
+    -fx-font-size: 13px;
 }
 
 .login-bg .icon-view {
-    -fx-fill: #A0B0C0;
+    -fx-fill: #94A3B8;
 }
 
 .login-bg .text-input {
-    -fx-background-color: rgba(255, 255, 255, 0.08);
-    -fx-border-color: rgba(255, 255, 255, 0.2);
+    -fx-background-color: rgba(255, 255, 255, 0.04);
+    -fx-border-color: rgba(255, 255, 255, 0.15);
+    -fx-border-radius: 8px;
+    -fx-background-radius: 8px;
     -fx-text-fill: #FFFFFF;
-    -fx-prompt-text-fill: #8090A0;
+    -fx-prompt-text-fill: #64748B;
+    -fx-padding: 12px 16px;
 }
 
 .login-bg .text-input:focused {
-    -fx-background-color: rgba(255, 255, 255, 0.15);
-    -fx-border-color: #0088FF;
-    -fx-effect: dropshadow(three-pass-box, rgba(0, 136, 255, 0.3), 10, 0, 0, 0);
+    -fx-background-color: rgba(255, 255, 255, 0.08);
+    -fx-border-color: #3B82F6;
+    -fx-effect: dropshadow(three-pass-box, rgba(59, 130, 246, 0.35), 10, 0, 0, 0);
+}
+
+.login-bg .button-primary {
+    -fx-background-color: #3B82F6;
+    -fx-background-radius: 8px;
+    -fx-padding: 12px 20px;
+    -fx-text-fill: #FFFFFF;
+    -fx-font-weight: bold;
+    -fx-font-size: 14px;
+}
+
+.login-bg .button-primary:hover {
+    -fx-background-color: #2563EB;
+    -fx-text-fill: #FFFFFF;
+    -fx-effect: dropshadow(three-pass-box, rgba(37, 99, 235, 0.4), 12, 0, 0, 4);
 }
 
 .login-bg .separator {
-    -fx-opacity: 0.2;
+    -fx-opacity: 0.15;
 }
 
 /* Botones con colores institucionales */
