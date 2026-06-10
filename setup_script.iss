@@ -5,7 +5,7 @@
 #define MyAppVersion "1.0.0"
 #define MyAppPublisher "Afro-American University of Central Africa (AAUCA)"
 #define MyAppPublisherURL "https://www.aauca.edu.gq/"
-#define MyAppExeName "app-core.exe"
+#define MyAppExeName "ClinicaAauca_Final.exe"
 
 [Setup]
 ; AppId único para la aplicación
@@ -37,14 +37,12 @@ Name: "spanish"; MessagesFile: "compiler:Default.isl"
 Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{cm:AdditionalIcons}"; Flags: unchecked
 
 [Files]
-; Binario principal ejecutable
+; Binario principal ejecutable (Launcher nativo C#)
 Source: "build-dist\{#MyAppExeName}"; DestDir: "{app}"; Flags: ignoreversion
-; Librerías dinámicas
-Source: "build-dist\lib\*"; DestDir: "{app}\lib"; Flags: ignoreversion recursesubdirs createallsubdirs
-; Recursos de solo lectura
-Source: "build-dist\resources\*"; DestDir: "{app}\resources"; Flags: ignoreversion recursesubdirs createallsubdirs
+; Archivo base de la aplicación Java (JAR)
+Source: "build-dist\Clinica_AAUCA.jar"; DestDir: "{app}"; Flags: ignoreversion
 ; Base de datos para la primera ejecución
-Source: "build-dist\clinica_aauca.db"; DestDir: "{app}"; Flags: ignoreversion
+Source: "build-dist\clinica_aauca.db"; DestDir: "{app}"; Flags: ignoreversion; Permissions: users-modify
 ; JRE Privado para ejecución autónoma sin dependencias globales de Java
 Source: "C:\Java\jdk-17\*"; DestDir: "{app}\jre"; Flags: ignoreversion recursesubdirs createallsubdirs
 
@@ -54,3 +52,4 @@ Name: "{autodesktop}\{#MyAppName}"; Filename: "{app}\{#MyAppExeName}"; Tasks: de
 
 [Run]
 Filename: "{app}\{#MyAppExeName}"; Description: "{cm:LaunchProgram,{#StringChange(MyAppName, '&', '&&')}}"; Flags: nowait postinstall skipifsilent
+

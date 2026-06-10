@@ -1,8 +1,8 @@
 using System;
 using System.IO;
-using System.Reflection;
 using System.Diagnostics;
-using System.IO.Compression;
+using System.Reflection;
+using System.Windows.Forms;
 
 namespace ClinicaAauca.App
 {
@@ -13,68 +13,59 @@ namespace ClinicaAauca.App
         {
             try
             {
-                // Crear un directorio temporal seguro para la ejecución portable
-                string tempDir = Path.Combine(Path.GetTempPath(), "ClinicaAAUCA_" + Guid.NewGuid().ToString());
-                Directory.CreateDirectory(tempDir);
+                // Obtener el directorio donde se encuentra este ejecutable
+                string appDir = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+                
+                // Rutas absolutas calculadas dinámicamente en tiempo de ejecución
+                string privateJava = Path.Combine(appDir, @"jre\bin\javaw.exe");
+                string jarPath = Path.Combine(appDir, "Clinica_AAUCA.jar");
 
-                // Extraer el archivo ZIP de los recursos incrustados en el binario
-                Assembly assembly = Assembly.GetExecutingAssembly();
-                using (Stream stream = assembly.GetManifestResourceStream("app_bundle.zip"))
+                // Verificar existencia de la JRE privada en la instalación
+                if (!File.Exists(privateJava))
                 {
-                    if (stream == null) {
-                        // Buscar el recurso utilizando el espacio de nombres
-                        using (Stream stream2 = assembly.GetManifestResourceStream("ClinicaAauca.App.app_bundle.zip")) {
-                             if (stream2 == null) throw new Exception("Recurso de la aplicación no encontrado.");
-                             GuardarYEjecutar(stream2, tempDir);
-                        }
-                    } else {
-                        GuardarYEjecutar(stream, tempDir);
-                    }
+                    MessageBox.Show(
+                        "Error de inicio: No se encontró el entorno de ejecución privado (JRE) en:\n" + privateJava + 
+                        "\n\nPor favor, reinstale la aplicación o asegúrese de que el instalador finalizó correctamente.", 
+                        "Sistema Clínico AAUCA", 
+                        MessageBoxButtons.OK, 
+                        MessageBoxIcon.Error
+                    );
+                    return;
                 }
+
+                // Verificar existencia del archivo base de la aplicación (JAR)
+                if (!File.Exists(jarPath))
+                {
+                    MessageBox.Show(
+                        "Error de inicio: No se encontró el archivo base de la aplicación (JAR) en:\n" + jarPath + 
+                        "\n\nPor favor, reinstale la aplicación.", 
+                        "Sistema Clínico AAUCA", 
+                        MessageBoxButtons.OK, 
+                        MessageBoxIcon.Error
+                    );
+                    return;
+                }
+
+                // Configurar y arrancar el proceso del JRE privado de forma directa
+                ProcessStartInfo psi = new ProcessStartInfo();
+                psi.FileName = privateJava;
+                psi.Arguments = "-jar \"" + jarPath + "\"";
+                psi.WorkingDirectory = appDir; // Carpeta de trabajo es la misma que la de instalación
+                psi.CreateNoWindow = true;
+                psi.UseShellExecute = false;
+                
+                Process.Start(psi);
             }
             catch (Exception ex)
             {
-                System.Windows.Forms.MessageBox.Show("Error de inicialización: " + ex.Message, "Clínica AAUCA", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
-            }
-        }
-
-        static void GuardarYEjecutar(Stream stream, string tempDir) {
-            string zipPath = Path.Combine(tempDir, "bundle.zip");
-            using (FileStream fs = new FileStream(zipPath, FileMode.Create))
-            {
-                stream.CopyTo(fs);
-            }
-
-            // Descomprimir el paquete en el directorio temporal
-            ZipFile.ExtractToDirectory(zipPath, tempDir);
-
-            // Obtener la ruta donde se ejecuta este Wrapper
-            string appDir = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
-            string privateJava = Path.Combine(appDir, @"jre\bin\javaw.exe");
-
-            if (File.Exists(privateJava))
-            {
-                // Si existe la JRE privada, ejecutar con ella de forma directa y silenciosa
-                ProcessStartInfo psi = new ProcessStartInfo();
-                psi.FileName = privateJava;
-                psi.Arguments = "-jar \"" + Path.Combine(tempDir, "Clinica_AAUCA.jar") + "\"";
-                psi.WorkingDirectory = tempDir;
-                psi.CreateNoWindow = true;
-                psi.UseShellExecute = false;
-                Process.Start(psi);
-            }
-            else
-            {
-                // Si no existe, caer en el script por lotes por defecto (sistema)
-                string batPath = Path.Combine(tempDir, "Iniciar_Clinica.bat");
-                if (File.Exists(batPath))
-                {
-                    ProcessStartInfo psi = new ProcessStartInfo(batPath);
-                    psi.WorkingDirectory = tempDir;
-                    psi.WindowStyle = ProcessWindowStyle.Hidden;
-                    Process.Start(psi);
-                }
+                MessageBox.Show(
+                    "Error crítico al iniciar la aplicación:\n" + ex.Message, 
+                    "Sistema Clínico AAUCA", 
+                    MessageBoxButtons.OK, 
+                    MessageBoxIcon.Error
+                );
             }
         }
     }
 }
+
