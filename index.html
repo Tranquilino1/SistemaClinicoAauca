@@ -66,46 +66,76 @@
             <div class="hidden md:flex items-center gap-8 text-sm font-bold uppercase tracking-widest text-gray-400">
                 <a href="#features" class="hover:text-aauca-gold transition">Características</a>
                 <a href="#tech" class="hover:text-aauca-gold transition">Seguridad</a>
-                <a href="Codigo_Fuente/dist_ready/ClinicaAauca_Setup.exe" class="bg-aauca-blue text-white border border-aauca-gold/30 px-6 py-2.5 rounded-xl font-black hover:bg-aauca-lightBlue hover:border-aauca-gold transition">DESCARGAR INSTALADOR</a>
+                <a href="#manual" class="hover:text-aauca-gold transition">Manual de Usuario</a>
+                <a href="ClinicaAauca_Setup.exe" class="bg-aauca-blue text-white border border-aauca-gold/30 px-6 py-2.5 rounded-xl font-black hover:bg-aauca-lightBlue hover:border-aauca-gold transition">DESCARGAR INSTALADOR</a>
             </div>
         </div>
     </nav>
 
     <!-- HERO -->
-    <section class="relative min-h-screen flex items-center justify-center pt-20 px-6">
+    <section class="relative min-h-screen flex items-center justify-center pt-32 pb-20 px-6">
         <div class="absolute inset-0 z-0 overflow-hidden">
             <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-aauca-blue/20 rounded-full blur-[120px]"></div>
             <div class="absolute bottom-1/4 right-1/4 w-96 h-96 bg-aauca-gold/10 rounded-full blur-[120px]"></div>
         </div>
 
-        <div class="relative z-10 max-w-5xl mx-auto text-center">
-            <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full glass text-aauca-gold text-xs font-black tracking-widest mb-8 uppercase" id="hero-badge">
-                <i data-lucide="shield-check" class="w-4 h-4"></i> Versión 1.0 Estable
-            </div>
-            
-            <h1 class="text-6xl md:text-8xl font-black tracking-tighter mb-8 leading-[0.9] uppercase italic" id="hero-title">
-                Salud & <br />
-                <span class="text-gradient">Tecnología</span>
-            </h1>
-            
-            <p class="text-xl md:text-2xl text-gray-400 max-w-3xl mx-auto mb-12 font-medium leading-relaxed" id="hero-desc">
-                Gestión médica profesional y registro de triaje estructurado en tiempo real. <br class="hidden md:block" />
-                Desarrollado para el campus de la Universidad Afro-Americana de África Central.
-            </p>
-
-            <div class="flex flex-col md:flex-row items-center justify-center gap-8 mb-20" id="hero-actions">
-                <a href="Codigo_Fuente/dist_ready/ClinicaAauca_Setup.exe" class="group bg-aauca-blue text-white border border-aauca-gold/40 px-12 py-6 rounded-2xl font-black text-2xl flex items-center gap-4 transition-all hover:scale-105 blue-glow active:scale-95">
-                    <i data-lucide="download" class="w-8 h-8 text-aauca-gold"></i> DESCARGAR SETUP EXE
-                </a>
-                
-                <div class="flex flex-col sm:flex-row items-center gap-6 p-6 glass rounded-[2.5rem]">
-                    <div class="bg-white p-3 rounded-2xl shadow-2xl overflow-hidden floating" id="logo-container">
-                        <img src="Codigo_Fuente/app_icon.png" alt="Logo Clínica AAUCA" class="w-24 h-24 object-contain" />
+        <div class="relative z-10 max-w-7xl mx-auto w-full">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center text-left">
+                <!-- Columna Izquierda: Información -->
+                <div class="lg:col-span-7 flex flex-col justify-center">
+                    <div class="inline-flex self-start items-center gap-2 px-4 py-2 rounded-full glass text-aauca-gold text-xs font-black tracking-widest mb-8 uppercase" id="hero-badge">
+                        <i data-lucide="shield-check" class="w-4 h-4"></i> Versión 1.0 Estable
                     </div>
-                    <div class="text-center sm:text-left">
-                        <p class="text-xs font-black text-aauca-gold uppercase tracking-[0.2em] mb-2">Instalación Local</p>
-                        <p class="text-2xl font-black leading-tight uppercase italic">Despliegue <br/><span class="text-blue-400">Silencioso</span></p>
-                        <p class="text-gray-500 text-xs mt-2 max-w-[180px]">Asistente de Inno Setup optimizado con licencia EULA.</p>
+                    
+                    <h1 class="text-5xl md:text-7xl lg:text-8xl font-black tracking-tighter mb-8 leading-[0.9] uppercase italic" id="hero-title">
+                        Salud & <br />
+                        <span class="text-gradient">Tecnología</span>
+                    </h1>
+                    
+                    <p class="text-lg md:text-xl text-gray-400 mb-12 font-medium leading-relaxed max-w-2xl" id="hero-desc">
+                        Gestión médica profesional y registro de triaje estructurado en tiempo real. <br class="hidden md:block" />
+                        Desarrollado para el campus de la Universidad Afro-Americana de África Central.
+                    </p>
+
+                    <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-6" id="hero-actions">
+                        <a href="ClinicaAauca_Setup.exe" class="group bg-aauca-blue text-white border border-aauca-gold/40 px-8 py-5 rounded-2xl font-black text-xl flex items-center justify-center gap-3 transition-all hover:scale-105 blue-glow active:scale-95">
+                            <i data-lucide="download" class="w-6 h-6 text-aauca-gold"></i> DESCARGAR SETUP EXE
+                        </a>
+                        
+                        <div class="flex items-center gap-4 p-4 glass rounded-2xl">
+                            <div class="bg-white p-2 rounded-xl shadow-2xl overflow-hidden floating w-16 h-16 flex items-center justify-center" id="logo-container">
+                                <img src="app_icon.png" alt="Logo Clínica AAUCA" class="w-12 h-12 object-contain" />
+                            </div>
+                            <div>
+                                <p class="text-[10px] font-black text-aauca-gold uppercase tracking-[0.2em] mb-1">Instalación Local</p>
+                                <p class="text-sm font-black leading-tight uppercase">Asistente <span class="text-blue-400">Inno Setup</span></p>
+                                <p class="text-gray-500 text-[10px] max-w-[150px]">Instalador optimizado con acuerdo EULA.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Columna Derecha: Captura Real -->
+                <div class="lg:col-span-5 relative flex justify-center items-center" id="hero-media">
+                    <div class="relative w-full max-w-[480px] rounded-[2rem] overflow-hidden glass border border-white/10 shadow-[0_20px_50px_rgba(0,0,0,0.5)] blue-glow group">
+                        <!-- Cabecera de la Ventana Mockup -->
+                        <div class="bg-black/80 px-6 py-3 border-b border-white/5 flex items-center justify-between">
+                            <span class="text-[10px] font-black text-gray-500 tracking-widest uppercase">Clínica AAUCA V1.0</span>
+                            <div class="flex gap-1.5">
+                                <span class="w-2.5 h-2.5 rounded-full bg-red-500"></span>
+                                <span class="w-2.5 h-2.5 rounded-full bg-yellow-500"></span>
+                                <span class="w-2.5 h-2.5 rounded-full bg-green-500"></span>
+                            </div>
+                        </div>
+                        <!-- Imagen de la Captura -->
+                        <div class="relative overflow-hidden bg-[#0A0F1D] aspect-[4/3] flex items-center justify-center p-2">
+                            <img src="app_screenshot.png" alt="Captura del Triaje de Pacientes" class="w-full h-full object-cover rounded-xl border border-white/5 transition-transform duration-500 group-hover:scale-105" />
+                        </div>
+                        <!-- Leyenda interactiva al pasar el mouse -->
+                        <div class="absolute bottom-0 inset-x-0 bg-gradient-to-t from-black via-black/95 to-transparent p-6 pt-12 transform translate-y-full group-hover:translate-y-0 transition-transform duration-300">
+                            <p class="text-aauca-gold text-[10px] font-black tracking-widest uppercase mb-1">Interfaz Real del Triaje</p>
+                            <p class="text-white text-xs font-bold leading-relaxed">Registro clínico estructurado en dos columnas: datos de filiación del paciente junto a sus constantes físicas e historial.</p>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -142,6 +172,62 @@
                     </div>
                     <h3 class="text-2xl font-bold mb-4 uppercase">Inventario Farmacéutico</h3>
                     <p class="text-gray-400">Control de stock de medicamentos y tratamientos antipalúdicos específicos con actualizaciones automáticas.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- MANUAL DE USUARIO -->
+    <section id="manual" class="py-32 px-6 relative overflow-hidden glass border-b border-white/5">
+        <div class="absolute inset-0 z-0">
+            <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-aauca-blue/10 rounded-full blur-[100px]"></div>
+        </div>
+        <div class="relative z-10 max-w-7xl mx-auto">
+            <div class="text-center mb-20">
+                <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full glass text-aauca-gold text-xs font-black tracking-widest mb-4 uppercase">
+                    <i data-lucide="book-open" class="w-4 h-4"></i> SOPORTE & DOCUMENTACIÓN
+                </div>
+                <h2 class="text-4xl md:text-5xl font-black tracking-tight uppercase italic">
+                    Manual de <span class="text-gradient">Usuario Oficial</span>
+                </h2>
+                <p class="text-gray-400 mt-4 max-w-2xl mx-auto font-medium">
+                    Acceda a la guía de operación autorizada para médicos, enfermeros y administradores del Sistema Clínico AAUCA.
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+                <!-- Manual Web Interactivo -->
+                <div class="p-10 rounded-[2.5rem] glass hover:border-aauca-gold/30 transition duration-300 flex flex-col justify-between blue-glow">
+                    <div>
+                        <div class="w-14 h-14 bg-aauca-blue/40 rounded-2xl flex items-center justify-center mb-8 border border-aauca-gold/15">
+                            <i data-lucide="monitor" class="text-aauca-gold w-7 h-7"></i>
+                        </div>
+                        <h3 class="text-3xl font-black mb-4 uppercase italic">Manual Web Interactivo</h3>
+                        <p class="text-gray-400 leading-relaxed mb-8">
+                            Explore la documentación completa en línea con un visor integrado, buscador de temas y guías de flujo de trabajo clínico optimizadas para navegadores.
+                        </p>
+                    </div>
+                    <a href="manual.html" class="inline-flex items-center gap-3 bg-white/5 border border-white/10 hover:bg-aauca-blue hover:border-aauca-gold/30 text-white font-bold py-4 px-8 rounded-2xl transition justify-center">
+                        <span>ABRIR EN EL NAVEGADOR</span>
+                        <i data-lucide="external-link" class="w-5 h-5 text-aauca-gold"></i>
+                    </a>
+                </div>
+
+                <!-- Manual PDF Descargable -->
+                <div class="p-10 rounded-[2.5rem] glass hover:border-aauca-gold/30 transition duration-300 flex flex-col justify-between blue-glow">
+                    <div>
+                        <div class="w-14 h-14 bg-aauca-blue/40 rounded-2xl flex items-center justify-center mb-8 border border-aauca-gold/15">
+                            <i data-lucide="file-text" class="text-aauca-gold w-7 h-7"></i>
+                        </div>
+                        <h3 class="text-3xl font-black mb-4 uppercase italic">Documento PDF Oficial</h3>
+                        <p class="text-gray-400 leading-relaxed mb-8">
+                            Descargue el manual de usuario en formato PDF para impresión o consulta sin conexión. Incluye las credenciales por defecto y el esquema de base de datos.
+                        </p>
+                    </div>
+                    <a href="manual_usuario.pdf" download class="inline-flex items-center gap-3 bg-aauca-blue text-white border border-aauca-gold/40 hover:bg-aauca-lightBlue hover:border-aauca-gold font-bold py-4 px-8 rounded-2xl transition justify-center shadow-lg shadow-aauca-blue/35">
+                        <span>DESCARGAR MANUAL (PDF)</span>
+                        <i data-lucide="download" class="w-5 h-5 text-aauca-gold"></i>
+                    </a>
                 </div>
             </div>
         </div>
@@ -213,7 +299,22 @@
         gsap.from("#hero-badge", { opacity: 0, y: 20, duration: 1, ease: "power4.out" });
         gsap.from("#hero-title", { opacity: 0, y: 40, duration: 1.2, delay: 0.2, ease: "power4.out" });
         gsap.from("#hero-desc", { opacity: 0, y: 30, duration: 1, delay: 0.5, ease: "power4.out" });
-        gsap.from("#hero-actions", { opacity: 0, scale: 0.9, duration: 1, delay: 0.8, ease: "back.out(1.7)" });
+        gsap.from("#hero-actions", { opacity: 0, y: 20, duration: 1, delay: 0.8, ease: "power4.out" });
+        gsap.from("#hero-media", { opacity: 0, x: 50, duration: 1.2, delay: 0.6, ease: "power4.out" });
+
+        // Scroll Trigger Animations
+        gsap.registerPlugin(ScrollTrigger);
+        gsap.from("#manual .grid > div", {
+            scrollTrigger: {
+                trigger: "#manual",
+                start: "top 80%",
+            },
+            opacity: 0,
+            y: 50,
+            stagger: 0.2,
+            duration: 1,
+            ease: "power3.out"
+        });
     </script>
 </body>
 </html>
