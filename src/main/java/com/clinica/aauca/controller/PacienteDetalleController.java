@@ -24,8 +24,8 @@ public class PacienteDetalleController {
     @FXML private Label lblEstadoHosp; 
     @FXML private Button btnNuevaConsulta;
     @FXML private Button btnHospitalizar;
-    // Botón inyectado desde FXML para registrar una nueva tanda de signos vitales (triaje)
-    @FXML private Button btnRegistrarTriaje;
+    // Botón inyectado desde FXML para registrar una nueva tanda de signos vitales
+    @FXML private Button btnRegistrarSignos;
     @FXML private Tab tabConsultas;
 
     @FXML private TableView<Consulta> tablaConsultas;
@@ -183,43 +183,43 @@ public class PacienteDetalleController {
     }
 
     /**
-     * Carga e inicializa el diálogo FXML de registro de signos vitales (triaje) para el paciente actual.
+     * Carga e inicializa el diálogo FXML de registro de signos vitales para el paciente actual.
      * Gestiona la confirmación de cambios pendientes y la persistencia de datos mediante el DAO correspondiente.
      */
     @FXML
-    public void registrarTriaje() {
+    public void registrarSignos() { // Cambiado de registrarTriaje a registrarSignos
         // Verifica que exista un paciente actual seleccionado
-        if (pacienteActual != null) {
-            try {
-                // Instancia el cargador FXML para cargar el diseño del diálogo de triaje
-                javafx.fxml.FXMLLoader loader = new javafx.fxml.FXMLLoader(getClass().getResource("/com/clinica/aauca/view/nuevo_triaje_dialog.fxml"));
+        if (pacienteActual != null) { // Verifica si el paciente actual no es nulo
+            try { // Inicia bloque try-catch para capturar errores de carga FXML
+                // Instancia el cargador FXML para cargar el diseño del diálogo de signos vitales
+                javafx.fxml.FXMLLoader loader = new javafx.fxml.FXMLLoader(getClass().getResource("/com/clinica/aauca/view/nuevo_signos_vitales_dialog.fxml")); // Apoya el nuevo FXML
                 // Carga el nodo raíz de la interfaz gráfica
-                javafx.scene.Parent root = loader.load();
+                javafx.scene.Parent root = loader.load(); // Carga el archivo FXML en un nodo
                 // Obtiene el controlador asociado para interactuar con la lógica del formulario
-                NuevoTriajeDialogController dialogController = loader.getController();
+                NuevoSignosVitalesDialogController dialogController = loader.getController(); // Vincula con el nuevo controlador
 
                 // Instancia el contenedor del diálogo tipado para retornar un objeto SignosVitales
-                Dialog<com.clinica.aauca.model.SignosVitales> dialog = new Dialog<>();
+                Dialog<com.clinica.aauca.model.SignosVitales> dialog = new Dialog<>(); // Crea el objeto Dialog
                 // Establece el título de la ventana
-                dialog.setTitle("Nuevo Triaje de Paciente");
+                dialog.setTitle("Nuevos Signos Vitales de Paciente"); // Cambiado título del diálogo
                 // Remueve el texto de cabecera por defecto para un look más limpio
-                dialog.setHeaderText(null);
+                dialog.setHeaderText(null); // Quita la cabecera por defecto
 
                 // Define los botones de acción del diálogo: Guardar y Cancelar
-                ButtonType btnGuardar = new ButtonType("Guardar Triaje", ButtonBar.ButtonData.OK_DONE);
-                dialog.getDialogPane().getButtonTypes().addAll(btnGuardar, ButtonType.CANCEL);
+                ButtonType btnGuardar = new ButtonType("Guardar Signos Vitales", ButtonBar.ButtonData.OK_DONE); // Cambiado texto a "Guardar Signos Vitales"
+                dialog.getDialogPane().getButtonTypes().addAll(btnGuardar, ButtonType.CANCEL); // Agrega los botones al pane
                 // Asigna el contenido FXML al panel de diálogo
-                dialog.getDialogPane().setContent(root);
+                dialog.getDialogPane().setContent(root); // Enlaza el diseño cargado
 
                 // Define el convertidor de resultado al presionar los botones del diálogo
-                dialog.setResultConverter(dialogButton -> {
-                    // Si el usuario presiona "Guardar Triaje", retorna los datos ingresados
-                    if (dialogButton == btnGuardar) {
-                        return dialogController.getResultData(pacienteActual.getId());
-                    }
+                dialog.setResultConverter(dialogButton -> { // Inicia conversión del resultado
+                    // Si el usuario presiona "Guardar Signos Vitales", retorna los datos ingresados
+                    if (dialogButton == btnGuardar) { // Verifica si se presionó guardar
+                        return dialogController.getResultData(pacienteActual.getId()); // Obtiene los signos ingresados
+                    } // Cierra verificación
                     // Si presiona Cancelar, retorna null
-                    return null;
-                });
+                    return null; // Retorna nulo
+                }); // Cierra conversor
 
                 // Intercepta el evento de cierre de la ventana (por ejemplo, clic en el botón 'X')
                 dialog.getDialogPane().getScene().getWindow().setOnCloseRequest(event -> {
@@ -308,23 +308,23 @@ public class PacienteDetalleController {
                         svDAO.registrarSignos(sv);
                         
                         // Muestra una ventana emergente informando el éxito de la operación
-                        Alert alerta = new Alert(Alert.AlertType.INFORMATION);
-                        alerta.setTitle("Éxito");
-                        alerta.setHeaderText("Triaje Registrado");
-                        alerta.setContentText("Los nuevos signos vitales han sido registrados correctamente.");
-                        alerta.showAndWait();
+                        Alert alerta = new Alert(Alert.AlertType.INFORMATION); // Crea alerta de tipo información
+                        alerta.setTitle("Éxito"); // Asigna título "Éxito"
+                        alerta.setHeaderText("Signos Vitales Registrados"); // Cambiado cabecera a "Signos Vitales Registrados"
+                        alerta.setContentText("Los nuevos signos vitales han sido registrados correctamente."); // Asigna contenido explicativo
+                        alerta.showAndWait(); // Muestra la alerta de éxito
                         
                         // Refresca la información del paciente en pantalla para reflejar los nuevos datos en las tablas
-                        cargarActividad();
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                        mostrarAlertaError("Error al registrar signos vitales: " + e.getMessage());
-                    }
-                });
-            } catch (Exception ex) {
-                ex.printStackTrace();
-                mostrarAlertaError("Error al cargar el formulario de triaje: " + ex.getMessage());
-            }
+                        cargarActividad(); // Recarga la actividad y tablas del paciente
+                    } catch (Exception e) { // Captura posibles excepciones durante el guardado
+                        e.printStackTrace(); // Imprime la traza de la excepción
+                        mostrarAlertaError("Error al registrar signos vitales: " + e.getMessage()); // Muestra mensaje de error
+                    } // Fin del bloque catch
+                }); // Fin del ifPresent
+            } catch (Exception ex) { // Captura errores al cargar la interfaz de signos vitales
+                ex.printStackTrace(); // Imprime la traza de la excepción
+                mostrarAlertaError("Error al cargar el formulario de signos vitales: " + ex.getMessage()); // Muestra mensaje de error al cargar dialog
+            } // Fin de la captura de errores
         }
     }
 

@@ -9,7 +9,7 @@ Este repositorio contiene la versión estable y de producción del **Sistema de 
     *   Búsqueda insensible a mayúsculas/minúsculas y auto-recorte (`trim`) de espacios para garantizar accesos sin incidencias.
 *   **Gestión Clínica Completa**:
     *   Registro integral de Pacientes con división nativa de campos de nombres y apellidos.
-    *   Módulo de Signos Vitales (Triaje) en tiempo real con historial médico cronológico.
+    *   Módulo de Signos Vitales en tiempo real con historial médico cronológico.
     *   Hospitalización de pacientes (seguimiento activo de camas e ingresos).
     *   Gestión de inventario de Medicamentos con alertas automáticas de bajo stock.
 *   **Base de Datos Resiliente**:

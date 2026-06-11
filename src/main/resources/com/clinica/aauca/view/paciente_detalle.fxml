@@ -23,8 +23,8 @@
             <Button fx:id="btnNuevaConsulta" text="🩺 Nueva Consulta" onAction="#nuevaConsulta" styleClass="button btn-green" prefWidth="180" />
             <!-- Botón para registrar un ingreso hospitalario para el paciente -->
             <Button fx:id="btnHospitalizar" text="🏥 Hospitalizar" onAction="#hospitalizar" styleClass="button btn-orange" prefWidth="180" />
-            <!-- Botón para registrar nuevos signos vitales de triaje para el paciente actual (disponible para médicos y enfermeros) -->
-            <Button fx:id="btnRegistrarTriaje" text="📊 Registrar Triaje" onAction="#registrarTriaje" styleClass="button" prefWidth="180" />
+            <!-- Botón para registrar nuevos signos vitales para el paciente actual (disponible para médicos y enfermeros) -->
+            <Button fx:id="btnRegistrarSignos" text="📊 Registrar Signos Vitales" onAction="#registrarSignos" styleClass="button" prefWidth="180" />
         </VBox>
     </HBox>
 
@@ -60,7 +60,7 @@
                 </TableView>
             </VBox>
         </Tab>
-        <Tab text="Signos Vitales (Triaje)">
+        <Tab text="Signos Vitales">
             <VBox spacing="10" style="-fx-padding: 15;">
                 <TableView fx:id="tablaSignosVitales" VBox.vgrow="ALWAYS">
                     <columns>

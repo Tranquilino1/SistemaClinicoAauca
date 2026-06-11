@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- Importaciones necesarias de controles y layouts de JavaFX -->
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.text.Font?>
+
+<!-- Contenedor principal del diálogo de signos vitales con espaciado vertical y relleno de márgenes -->
+<!-- Vincula con el nuevo controlador com.clinica.aauca.controller.NuevoSignosVitalesDialogController -->
+<VBox spacing="20" style="-fx-background-color: #F8FAFC; -fx-padding: 30;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.clinica.aauca.controller.NuevoSignosVitalesDialogController">
+    
+    <!-- Contenedor secundario horizontal con estilo de tarjeta y sombra paralela para una apariencia premium -->
+    <HBox spacing="40" style="-fx-background-color: white; -fx-padding: 40; -fx-background-radius: 12; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.08), 20, 0, 0, 8);">
+        
+        <!-- Columna principal vertical de entrada de datos de signos vitales -->
+        <VBox spacing="25" HBox.hgrow="ALWAYS">
+            
+            <!-- Etiqueta de título de sección con línea inferior de acento de color verde esmeralda, limpia de referencias a triaje -->
+            <Label text="REGISTRAR NUEVOS SIGNOS VITALES" style="-fx-font-size: 18px; -fx-font-weight: bold; -fx-text-fill: #1E293B; -fx-border-color: #10B981; -fx-border-width: 0 0 3 0; -fx-padding: 0 0 10 0;"/>
+            
+            <!-- Cuadrícula para alinear las etiquetas e inputs de los signos vitales -->
+            <GridPane hgap="25" vgap="18">
+                
+                <!-- Definición de restricciones de las columnas de la cuadrícula -->
+                <columnConstraints>
+                    <!-- Primera columna para etiquetas, con ancho mínimo y preferido -->
+                    <ColumnConstraints minWidth="130" prefWidth="150" />
+                    <!-- Segunda columna para campos de texto, con expansión automática -->
+                    <ColumnConstraints hgrow="ALWAYS" />
+                </columnConstraints>
+                
+                <!-- Fila 0: Campo para ingresar el peso en kg -->
+                <Label text="Peso (kg):" GridPane.columnIndex="0" GridPane.rowIndex="0" style="-fx-font-weight: bold; -fx-text-fill: #475569;" />
+                <TextField fx:id="txtPeso" promptText="Ej: 70.5" GridPane.columnIndex="1" GridPane.rowIndex="0" style="-fx-padding: 10; -fx-background-radius: 6; -fx-border-color: #CBD5E1; -fx-border-radius: 6; -fx-font-size: 13px;" />
+                
+                <!-- Fila 1: Campo para ingresar la talla en cm -->
+                <Label text="Talla (cm):" GridPane.columnIndex="0" GridPane.rowIndex="1" style="-fx-font-weight: bold; -fx-text-fill: #475569;" />
+                <TextField fx:id="txtTalla" promptText="Ej: 175" GridPane.columnIndex="1" GridPane.rowIndex="1" style="-fx-padding: 10; -fx-background-radius: 6; -fx-border-color: #CBD5E1; -fx-border-radius: 6; -fx-font-size: 13px;" />
+                
+                <!-- Fila 2: Campo para ingresar la temperatura en °C -->
+                <Label text="Temperatura (°C):" GridPane.columnIndex="0" GridPane.rowIndex="2" style="-fx-font-weight: bold; -fx-text-fill: #475569;" />
+                <TextField fx:id="txtTemperatura" promptText="Ej: 36.5" GridPane.columnIndex="1" GridPane.rowIndex="2" style="-fx-padding: 10; -fx-background-radius: 6; -fx-border-color: #CBD5E1; -fx-border-radius: 6; -fx-font-size: 13px;" />
+                
+                <!-- Fila 3: Campo para ingresar la frecuencia cardíaca en bpm -->
+                <Label text="Frec. Cardíaca:" GridPane.columnIndex="0" GridPane.rowIndex="3" style="-fx-font-weight: bold; -fx-text-fill: #475569;" />
+                <TextField fx:id="txtPulso" promptText="Ej: 72" GridPane.columnIndex="1" GridPane.rowIndex="3" style="-fx-padding: 10; -fx-background-radius: 6; -fx-border-color: #CBD5E1; -fx-border-radius: 6; -fx-font-size: 13px;" />
+                
+                <!-- Fila 4: Campo para ingresar la frecuencia respiratoria en rpm -->
+                <Label text="Frec. Respiratoria:" GridPane.columnIndex="0" GridPane.rowIndex="4" style="-fx-font-weight: bold; -fx-text-fill: #475569;" />
+                <TextField fx:id="txtResp" promptText="Ej: 16" GridPane.columnIndex="1" GridPane.rowIndex="4" style="-fx-padding: 10; -fx-background-radius: 6; -fx-border-color: #CBD5E1; -fx-border-radius: 6; -fx-font-size: 13px;" />
+                
+                <!-- Fila 5: Campo para ingresar la presión arterial (sistólica/diastólica) -->
+                <Label text="Presión Arterial:" GridPane.columnIndex="0" GridPane.rowIndex="5" style="-fx-font-weight: bold; -fx-text-fill: #475569;" />
+                <TextField fx:id="txtPresion" promptText="Ej: 120/80" GridPane.columnIndex="1" GridPane.rowIndex="5" style="-fx-padding: 10; -fx-background-radius: 6; -fx-border-color: #CBD5E1; -fx-border-radius: 6; -fx-font-size: 13px;" />
+                
+            </GridPane>
+        </VBox>
+        
+    </HBox>
+</VBox>

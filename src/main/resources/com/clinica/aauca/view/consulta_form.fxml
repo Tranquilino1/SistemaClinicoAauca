@@ -18,9 +18,11 @@
 
     <Separator />
     
-    <!-- Signos Vitales (Cargados del Triaje) -->
+    <!-- Sección para mostrar los últimos Signos Vitales del paciente (sin referencias a triaje) -->
     <HBox spacing="20" style="-fx-padding: 10; -fx-background-color: #F1F8E9; -fx-background-radius: 10; -fx-border-color: #81C784; -fx-border-radius: 10;">
-        <Label text="📊 Signos Vitales (Triaje):" style="-fx-font-weight: bold; -fx-text-fill: #2E7D32;" />
+        <!-- Etiqueta de Signos Vitales, renombrada para remover 'Triaje' -->
+        <Label text="📊 Signos Vitales:" style="-fx-font-weight: bold; -fx-text-fill: #2E7D32;" />
+        <!-- Campo para inyectar los valores físicos del paciente -->
         <Label fx:id="lblSignosVitales" text="Cargando..." style="-fx-font-style: italic;" />
     </HBox>
 

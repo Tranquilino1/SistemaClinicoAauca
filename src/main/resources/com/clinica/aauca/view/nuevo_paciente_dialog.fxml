@@ -47,9 +47,10 @@
         
         <Separator orientation="VERTICAL" style="-fx-padding: 0 15;"/>
         
-        <!-- Right Column: Triage / Vitals -->
+        <!-- Columna derecha: Signos Vitales del paciente (sin referencias a triaje) -->
         <VBox spacing="25" HBox.hgrow="ALWAYS">
-            <Label text="SIGNOS VITALES (Triaje)" style="-fx-font-size: 18px; -fx-font-weight: bold; -fx-text-fill: #1E293B; -fx-border-color: #10B981; -fx-border-width: 0 0 3 0; -fx-padding: 0 0 10 0;"/>
+            <!-- Título de sección de Signos Vitales, renombrado para eliminar la palabra triaje -->
+            <Label text="SIGNOS VITALES" style="-fx-font-size: 18px; -fx-font-weight: bold; -fx-text-fill: #1E293B; -fx-border-color: #10B981; -fx-border-width: 0 0 3 0; -fx-padding: 0 0 10 0;"/>
             
             <GridPane hgap="25" vgap="18">
                 <columnConstraints>

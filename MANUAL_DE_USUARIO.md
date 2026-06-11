@@ -1,6 +1,6 @@
 # 📖 Manual de Usuario - Sistema de Gestión Clínica AAUCA
 
-Bienvenido al manual oficial de usuario del **Sistema Clínico AAUCA (Versión 1.0)**. Este software ha sido desarrollado específicamente para facilitar la administración médica, triaje, historial clínico, hospitalizaciones e inventario de farmacia de la clínica de la **Universidad Afroamericana de África Central (AAUCA)**.
+Bienvenido al manual oficial de usuario del **Sistema Clínico AAUCA (Versión 1.0)**. Este software ha sido desarrollado específicamente para facilitar la administración médica, registro de signos vitales, historial clínico, hospitalizaciones e inventario de farmacia de la clínica de la **Universidad Afroamericana de África Central (AAUCA)**.
 
 ---
 
@@ -10,7 +10,7 @@ Bienvenido al manual oficial de usuario del **Sistema Clínico AAUCA (Versión 1
 3. [Inicio de Sesión y Credenciales por Defecto](#-inicio-de-sesión-y-credenciales-por-defecto)
 4. [Módulos del Sistema y Flujo Clínico](#-módulos-del-sistema-y-flujo-clínico)
    - [A. Registro de Pacientes](#a-registro-de-pacientes)
-   - [B. Módulo de Triaje (Signos Vitales)](#b-módulo-de-triaje-signos-vitales)
+   - [B. Módulo de Signos Vitales](#b-módulo-de-signos-vitales)
    - [C. Módulo de Consultas y Recetas](#c-módulo-de-consultas-y-recetas)
    - [D. Módulo de Hospitalizaciones (Camas)](#d-módulo-de-hospitalizaciones-camas)
    - [E. Control de Farmacia e Inventario](#e-control-de-farmacia-e-inventario)
@@ -52,7 +52,7 @@ Al abrir la aplicación, verá la pantalla de Login institucional con el logotip
 | :--- | :--- | :--- | :--- |
 | **Administrador** | `admin` | `admin123` | Control total del sistema, administración de usuarios y configuración general. |
 | **Médico** | `medico` | `medico123` | Creación de consultas clínicas, diagnósticos, recetas de medicamentos y altas. |
-| **Enfermero** | `enfermero` | `enfermero123` | Registro de pacientes y toma de signos vitales (Triaje). |
+| **Enfermero** | `enfermero` | `enfermero123` | Registro de pacientes y toma de signos vitales. |
 
 > [!IMPORTANT]
 > Por motivos de seguridad, las contraseñas no se almacenan en texto plano en la base de datos; se encuentran encriptadas de extremo a extremo utilizando el algoritmo **BCrypt** de grado militar.
@@ -72,7 +72,7 @@ El sistema sigue el flujo natural de un hospital o clínica universitaria:
   3. Indique si el paciente es **Estudiante** (lo que aplica descuentos automáticos en consultas y medicamentos) o personal docente/administrativo.
   4. Presione **Guardar**.
 
-### B. Módulo de Triaje (Signos Vitales)
+### B. Módulo de Signos Vitales
 * **Acceso**: Seleccione un paciente y presione **Signos Vitales** o acceda al módulo desde el menú.
 * **Propósito**: Tomar las medidas físicas del paciente antes de entrar al consultorio médico.
 * **Acciones**:

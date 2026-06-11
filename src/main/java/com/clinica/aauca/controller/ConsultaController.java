@@ -35,7 +35,7 @@ public class ConsultaController {
     @FXML private TextField txtLaboratorio;      // Resultados de laboratorio
     @FXML private TextArea txtTratamiento;       // Instrucciones médicas
     @FXML private TextArea txtReceta;            // Listado de medicamentos y dosis
-    @FXML private Label lblSignosVitales;        // Visualización de signos vitales (Triaje)
+    @FXML private Label lblSignosVitales;        // Etiqueta inyectada para visualizar los signos vitales del paciente (sin triaje)
     @FXML private VBox cajaFacturacion;          // Panel de cobros (FCFA)
     @FXML private TextField txtFactura;          // Monto total a cobrar
     @FXML private Label lblMensajeEstudiante;    // Aviso de exención de pago para alumnos

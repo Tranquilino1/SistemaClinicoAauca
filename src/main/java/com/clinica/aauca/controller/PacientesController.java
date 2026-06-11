@@ -167,9 +167,12 @@ public class PacientesController {
             javafx.scene.Parent root = loader.load();
             NuevoPacienteDialogController dialogController = loader.getController();
 
-            Dialog<javafx.util.Pair<Paciente, com.clinica.aauca.model.SignosVitales>> dialog = new Dialog<>();
-            dialog.setTitle("Nuevo Paciente y Triaje");
-            dialog.setHeaderText(null);
+            // Inicializa la ventana de diálogo tipada para retornar un par de Paciente y SignosVitales
+            Dialog<javafx.util.Pair<Paciente, com.clinica.aauca.model.SignosVitales>> dialog = new Dialog<>(); // Crea el objeto dialog
+            // Configura el título de la ventana de diálogo, renombrado para omitir la palabra triaje
+            dialog.setTitle("Nuevo Paciente y Signos Vitales"); // Establece el título de la ventana
+            // Remueve el encabezado por defecto para dar un aspecto visual más moderno y limpio
+            dialog.setHeaderText(null); // Quita el texto de cabecera
             
             ButtonType btnGuardar = new ButtonType("Guardar Todo", ButtonBar.ButtonData.OK_DONE);
             dialog.getDialogPane().getButtonTypes().addAll(btnGuardar, ButtonType.CANCEL);
