@@ -17,9 +17,14 @@
                 <Label fx:id="lblEstadoHosp" text="NO HOSPITALIZADO" style="-fx-background-color: #E8F5E9; -fx-text-fill: #2E7D32; -fx-padding: 2 10; -fx-background-radius: 12; -fx-font-size: 11px; -fx-font-weight: bold;" />
             </HBox>
         </VBox>
+        <!-- Contenedor vertical de botones de acción rápida para el paciente -->
         <VBox spacing="10">
+            <!-- Botón para iniciar una nueva consulta médica (enlace al formulario de consulta) -->
             <Button fx:id="btnNuevaConsulta" text="🩺 Nueva Consulta" onAction="#nuevaConsulta" styleClass="button btn-green" prefWidth="180" />
+            <!-- Botón para registrar un ingreso hospitalario para el paciente -->
             <Button fx:id="btnHospitalizar" text="🏥 Hospitalizar" onAction="#hospitalizar" styleClass="button btn-orange" prefWidth="180" />
+            <!-- Botón para registrar nuevos signos vitales de triaje para el paciente actual (disponible para médicos y enfermeros) -->
+            <Button fx:id="btnRegistrarTriaje" text="📊 Registrar Triaje" onAction="#registrarTriaje" styleClass="button" prefWidth="180" />
         </VBox>
     </HBox>
 

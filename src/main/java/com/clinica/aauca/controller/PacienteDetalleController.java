@@ -24,6 +24,8 @@ public class PacienteDetalleController {
     @FXML private Label lblEstadoHosp; 
     @FXML private Button btnNuevaConsulta;
     @FXML private Button btnHospitalizar;
+    // Botón inyectado desde FXML para registrar una nueva tanda de signos vitales (triaje)
+    @FXML private Button btnRegistrarTriaje;
     @FXML private Tab tabConsultas;
 
     @FXML private TableView<Consulta> tablaConsultas;
@@ -178,5 +180,167 @@ public class PacienteDetalleController {
         if (pacienteActual != null) {
             DashboardController.getInstancia().navegarAPaciente("Hospitalización", "hospitalizacion_view.fxml", pacienteActual.getId());
         }
+    }
+
+    /**
+     * Carga e inicializa el diálogo FXML de registro de signos vitales (triaje) para el paciente actual.
+     * Gestiona la confirmación de cambios pendientes y la persistencia de datos mediante el DAO correspondiente.
+     */
+    @FXML
+    public void registrarTriaje() {
+        // Verifica que exista un paciente actual seleccionado
+        if (pacienteActual != null) {
+            try {
+                // Instancia el cargador FXML para cargar el diseño del diálogo de triaje
+                javafx.fxml.FXMLLoader loader = new javafx.fxml.FXMLLoader(getClass().getResource("/com/clinica/aauca/view/nuevo_triaje_dialog.fxml"));
+                // Carga el nodo raíz de la interfaz gráfica
+                javafx.scene.Parent root = loader.load();
+                // Obtiene el controlador asociado para interactuar con la lógica del formulario
+                NuevoTriajeDialogController dialogController = loader.getController();
+
+                // Instancia el contenedor del diálogo tipado para retornar un objeto SignosVitales
+                Dialog<com.clinica.aauca.model.SignosVitales> dialog = new Dialog<>();
+                // Establece el título de la ventana
+                dialog.setTitle("Nuevo Triaje de Paciente");
+                // Remueve el texto de cabecera por defecto para un look más limpio
+                dialog.setHeaderText(null);
+
+                // Define los botones de acción del diálogo: Guardar y Cancelar
+                ButtonType btnGuardar = new ButtonType("Guardar Triaje", ButtonBar.ButtonData.OK_DONE);
+                dialog.getDialogPane().getButtonTypes().addAll(btnGuardar, ButtonType.CANCEL);
+                // Asigna el contenido FXML al panel de diálogo
+                dialog.getDialogPane().setContent(root);
+
+                // Define el convertidor de resultado al presionar los botones del diálogo
+                dialog.setResultConverter(dialogButton -> {
+                    // Si el usuario presiona "Guardar Triaje", retorna los datos ingresados
+                    if (dialogButton == btnGuardar) {
+                        return dialogController.getResultData(pacienteActual.getId());
+                    }
+                    // Si presiona Cancelar, retorna null
+                    return null;
+                });
+
+                // Intercepta el evento de cierre de la ventana (por ejemplo, clic en el botón 'X')
+                dialog.getDialogPane().getScene().getWindow().setOnCloseRequest(event -> {
+                    // Si hay cambios no guardados en el formulario
+                    if (dialogController.hasChanges()) {
+                        // Muestra una confirmación al usuario para advertir la pérdida de datos
+                        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+                        alert.setTitle("Cambios no guardados");
+                        alert.setHeaderText("Tiene cambios sin guardar en el formulario.");
+                        alert.setContentText("¿Desea guardarlos antes de salir?");
+                        
+                        // Define los botones de la confirmación
+                        ButtonType btnSi = new ButtonType("Guardar");
+                        ButtonType btnNo = new ButtonType("Descartar");
+                        ButtonType btnCancel = new ButtonType("Cancelar", ButtonBar.ButtonData.CANCEL_CLOSE);
+                        alert.getButtonTypes().setAll(btnSi, btnNo, btnCancel);
+                        
+                        // Captura la respuesta del usuario
+                        java.util.Optional<ButtonType> opt = alert.showAndWait();
+                        if (opt.isPresent()) {
+                            if (opt.get() == btnSi) {
+                                // Intenta simular el clic en el botón de guardar
+                                Button okButton = (Button) dialog.getDialogPane().lookupButton(btnGuardar);
+                                if (okButton != null) {
+                                    okButton.fire();
+                                }
+                            } else if (opt.get() == btnNo) {
+                                // Cierra el diálogo descartando cambios
+                                dialog.close();
+                            } else {
+                                // Cancela el cierre y mantiene el diálogo abierto
+                                event.consume();
+                            }
+                        } else {
+                            // Mantiene el diálogo abierto si no hay respuesta clara
+                            event.consume();
+                        }
+                    }
+                });
+
+                // Intercepta el clic del botón de cancelación estándar del diálogo
+                Button cancelButton = (Button) dialog.getDialogPane().lookupButton(ButtonType.CANCEL);
+                if (cancelButton != null) {
+                    cancelButton.addEventFilter(javafx.event.ActionEvent.ACTION, event -> {
+                        // Si el usuario tiene cambios pendientes de guardar
+                        if (dialogController.hasChanges()) {
+                            // Pregunta si desea guardar, descartar o cancelar la salida
+                            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+                            alert.setTitle("Cambios no guardados");
+                            alert.setHeaderText("Tiene cambios sin guardar en el formulario.");
+                            alert.setContentText("¿Desea guardarlos antes de salir?");
+                            
+                            ButtonType btnSi = new ButtonType("Guardar");
+                            ButtonType btnNo = new ButtonType("Descartar");
+                            ButtonType btnCancel = new ButtonType("Cancelar", ButtonBar.ButtonData.CANCEL_CLOSE);
+                            alert.getButtonTypes().setAll(btnSi, btnNo, btnCancel);
+                            
+                            java.util.Optional<ButtonType> opt = alert.showAndWait();
+                            if (opt.isPresent()) {
+                                if (opt.get() == btnSi) {
+                                    // Invoca el proceso de guardado y detiene el evento de cancelación inmediata
+                                    Button okButton = (Button) dialog.getDialogPane().lookupButton(btnGuardar);
+                                    if (okButton != null) {
+                                        okButton.fire();
+                                    }
+                                    event.consume();
+                                } else if (opt.get() == btnNo) {
+                                    // Permite continuar la cancelación (cerrar el diálogo)
+                                } else {
+                                    // Consume el evento para abortar la cancelación y seguir editando
+                                    event.consume();
+                                }
+                            } else {
+                                // Aborta la cancelación
+                                event.consume();
+                            }
+                        }
+                    });
+                }
+
+                // Despliega el diálogo y espera a que el usuario complete la acción
+                java.util.Optional<com.clinica.aauca.model.SignosVitales> resultado = dialog.showAndWait();
+                resultado.ifPresent(sv -> {
+                    try {
+                        // Registra los nuevos signos vitales en la persistencia local de la base de datos
+                        svDAO.registrarSignos(sv);
+                        
+                        // Muestra una ventana emergente informando el éxito de la operación
+                        Alert alerta = new Alert(Alert.AlertType.INFORMATION);
+                        alerta.setTitle("Éxito");
+                        alerta.setHeaderText("Triaje Registrado");
+                        alerta.setContentText("Los nuevos signos vitales han sido registrados correctamente.");
+                        alerta.showAndWait();
+                        
+                        // Refresca la información del paciente en pantalla para reflejar los nuevos datos en las tablas
+                        cargarActividad();
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                        mostrarAlertaError("Error al registrar signos vitales: " + e.getMessage());
+                    }
+                });
+            } catch (Exception ex) {
+                ex.printStackTrace();
+                mostrarAlertaError("Error al cargar el formulario de triaje: " + ex.getMessage());
+            }
+        }
+    }
+
+    /**
+     * Muestra una ventana emergente de tipo error al usuario.
+     * 
+     * @param mensaje El mensaje descriptivo del fallo ocurrido.
+     */
+    private void mostrarAlertaError(String mensaje) {
+        // Instancia una alerta de tipo ERROR de JavaFX
+        Alert alerta = new Alert(Alert.AlertType.ERROR);
+        alerta.setTitle("Error");
+        alerta.setHeaderText(null);
+        // Asigna el texto informativo del error
+        alerta.setContentText(mensaje);
+        // Muestra la ventana y bloquea la ejecución hasta que se cierre
+        alerta.showAndWait();
     }
 }
